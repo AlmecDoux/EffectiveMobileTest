@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="begin_margin_page">8dp</dimen>
+    <dimen name="small_margin">5dp</dimen>
+    <dimen name="medium_margin">18dp</dimen>
+    <dimen name="big_margin">27dp</dimen>
+    <dimen name="title_page_size">25sp</dimen>
+    <dimen name="text_page_size">12sp</dimen>
+    <dimen name="primary_text_page_size">16sp</dimen>
+    <dimen name="small_page_size">10sp</dimen>
+</resources>
