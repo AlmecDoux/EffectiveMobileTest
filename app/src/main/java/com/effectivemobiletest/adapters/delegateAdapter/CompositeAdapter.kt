@@ -1,4 +1,4 @@
-package com.ineco.effectivemobiletest.adapters.delegateAdapter
+package com.effectivemobiletest.adapters.delegateAdapter
 
 import android.util.SparseArray
 import android.view.ViewGroup

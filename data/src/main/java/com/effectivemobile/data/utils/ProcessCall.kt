@@ -7,7 +7,12 @@ suspend fun processCall(responseCall: suspend () -> Response<*>): Any {
     return try {
         val response = responseCall.invoke()
         if (response.isSuccessful) {
-            response
+            if(response.body() == null){
+                "Something went wrong"
+            }
+            else{
+                response.body()!!
+            }
         } else {
             if (response.errorBody() != null) {
                 response.errorBody()!!.string()

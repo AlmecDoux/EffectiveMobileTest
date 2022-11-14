@@ -8,12 +8,12 @@ apply plugin: 'dagger.hilt.android.plugin'
 
 android {
     namespace 'com.effectivemobile.test'
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId 'com.effectivemobile.test'
         minSdk 23
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -53,6 +53,8 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
     implementation 'com.github.kirich1409:viewbindingpropertydelegate:1.5.6'
     implementation 'com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.6'
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
     kapt "org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.5.0"
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-android-compiler:$hilt_version"

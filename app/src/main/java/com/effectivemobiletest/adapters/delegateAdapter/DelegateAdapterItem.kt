@@ -1,4 +1,4 @@
-package com.ineco.effectivemobiletest.adapters.delegateAdapter
+package com.effectivemobiletest.adapters.delegateAdapter
 
 interface DelegateAdapterItem {
 

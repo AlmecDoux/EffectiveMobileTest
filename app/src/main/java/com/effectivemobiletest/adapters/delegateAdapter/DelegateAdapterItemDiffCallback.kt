@@ -1,4 +1,4 @@
-package com.ineco.effectivemobiletest.adapters.delegateAdapter
+package com.effectivemobiletest.adapters.delegateAdapter
 
 import androidx.recyclerview.widget.DiffUtil
 

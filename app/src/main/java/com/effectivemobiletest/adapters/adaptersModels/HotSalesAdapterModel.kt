@@ -1,7 +1,7 @@
-package com.ineco.effectivemobiletest.adapters.adaptersModels
+package com.effectivemobiletest.adapters.adaptersModels
 
 import com.effectivemobile.domain.models.subtypes.HotSalesItem
-import com.ineco.effectivemobiletest.adapters.delegateAdapter.DelegateAdapterItem
+import com.effectivemobiletest.adapters.delegateAdapter.DelegateAdapterItem
 
 class HotSalesAdapterModel(private val hotSaleItem: HotSalesItem): DelegateAdapterItem {
 
