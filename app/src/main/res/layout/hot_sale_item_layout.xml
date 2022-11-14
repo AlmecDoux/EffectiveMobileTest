@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:layout_margin="@dimen/small_margin"
+    app:cardCornerRadius="@dimen/big_round"
+    app:cardElevation="0dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/glStartTitleItem"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.3" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgHotSaleItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/test_pic"
+            android:scaleType="centerCrop"
+            android:background="@drawable/rounded_panel"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/iconNew"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="@dimen/big_margin"
+            android:background="@drawable/primary_rounded_point"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/new_"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small_page_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/glStartTitleItem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/titleHotSaleItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Samsung Galaxy s20 Ultra"
+            android:textColor="@color/white"
+            android:textSize="@dimen/title_page_size"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_marginEnd="@dimen/medium_margin"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/iconNew"
+            app:layout_constraintTop_toTopOf="@+id/glStartTitleItem" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/subTitleHotSaleItem"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/small_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:layout_marginEnd="@dimen/medium_margin"
+            android:text="Súper. Mega. Rápido"
+            android:textColor="@color/white"
+            android:textSize="@dimen/small_page_size"
+            android:textStyle="bold"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/iconNew"
+            app:layout_constraintTop_toBottomOf="@+id/titleHotSaleItem" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnBuyNow"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:background="@drawable/background_button"
+            android:includeFontPadding="false"
+            android:paddingHorizontal="@dimen/medium_margin"
+            android:text="Buy Now!"
+            android:textAllCaps="false"
+            android:textSize="@dimen/small_page_size"
+            android:textStyle="bold"
+            android:layout_marginEnd="@dimen/medium_margin"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/subTitleHotSaleItem"
+            app:layout_constraintTop_toBottomOf="@+id/subTitleHotSaleItem" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

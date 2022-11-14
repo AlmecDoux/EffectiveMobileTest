@@ -8,4 +8,6 @@
     <dimen name="text_page_size">12sp</dimen>
     <dimen name="primary_text_page_size">16sp</dimen>
     <dimen name="small_page_size">10sp</dimen>
+    <dimen name="big_round">15dp</dimen>
+    <dimen name="small_round">5dp</dimen>
 </resources>
