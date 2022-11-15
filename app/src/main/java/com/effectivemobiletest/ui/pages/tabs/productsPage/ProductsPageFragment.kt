@@ -6,19 +6,26 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.effectivemobile.test.R
 import com.effectivemobile.test.databinding.ProductsPageLayoutBinding
-import com.effectivemobiletest.App.Companion.outLogs
+import com.effectivemobiletest.adapters.adapters.CategoriesAdapter
 import com.effectivemobiletest.adapters.adapters.HotSalesAdapter
 import com.effectivemobiletest.adapters.delegateAdapter.CompositeAdapter
+import com.effectivemobiletest.decorations.marginDecorations.HorizontalMarginItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
-import dagger.hilt.android.HiltAndroidApp
 
 @AndroidEntryPoint
 class ProductsPageFragment:Fragment() {
 
-    private val compositeAdapter by lazy {
+    private val categoryAdapter by lazy {
+        CompositeAdapter.Builder()
+            .add(CategoriesAdapter{})
+            .build()
+    }
+    private val hotSaleAdapter by lazy {
         CompositeAdapter.Builder()
             .add(HotSalesAdapter{})
             .build()
@@ -34,11 +41,26 @@ class ProductsPageFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        outLogs("Created ProductsPageFragment")
-        binding.homePageRV.adapter = compositeAdapter
-        viewModel.pageData.observe(viewLifecycleOwner){
+        val categoriesLM = LinearLayoutManager(requireContext())
+        categoriesLM.orientation = LinearLayoutManager.HORIZONTAL
+        lifecycle.addObserver(viewModel)
+        binding.categoriesRV.layoutManager = categoriesLM
+        binding.categoriesRV.adapter = categoryAdapter
+        binding.hotSalesRV.adapter = hotSaleAdapter
+        binding.hotSalesRV.apply {
+            setAlpha(true)
+            setInfinite(true)
+            setIntervalRatio(0.8f)
+        }
+        binding.hotSalesRV.addItemDecoration(HorizontalMarginItemDecoration(resources.getDimensionPixelSize(R.dimen.small_margin)))
+        viewModel.hotSalesData.observe(viewLifecycleOwner){
             it.getContentIfNotHandled()?.let { listOfElement->
-                compositeAdapter.submitList(listOfElement)
+                hotSaleAdapter.submitList(listOfElement)
+            }
+        }
+        viewModel.categoryData.observe(viewLifecycleOwner){
+            it.getContentIfNotHandled()?.let { listOfElement->
+                categoryAdapter.submitList(listOfElement)
             }
         }
     }

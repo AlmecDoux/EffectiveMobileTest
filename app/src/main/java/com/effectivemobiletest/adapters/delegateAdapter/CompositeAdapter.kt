@@ -2,6 +2,8 @@ package com.effectivemobiletest.adapters.delegateAdapter
 
 import android.util.SparseArray
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
+import androidx.recyclerview.widget.AsyncListUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 

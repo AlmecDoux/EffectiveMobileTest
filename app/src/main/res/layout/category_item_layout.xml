@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/medium_margin">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/categoryImg"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:srcCompat="@drawable/phone_icon"
+        app:tint="@color/white"
+        android:scaleType="centerInside"
+        android:background="@drawable/primary_rounded_point"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/categoryName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Phones"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="@dimen/primary_text_page_size"
+        android:layout_marginTop="@dimen/small_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/categoryImg"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

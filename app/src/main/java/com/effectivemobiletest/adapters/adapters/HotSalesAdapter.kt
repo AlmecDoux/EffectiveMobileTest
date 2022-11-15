@@ -1,6 +1,7 @@
 package com.effectivemobiletest.adapters.adapters
 
 import android.content.Context
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -10,6 +11,7 @@ import com.effectivemobiletest.adapters.adaptersModels.HotSalesAdapterModel
 import com.effectivemobiletest.adapters.delegateAdapter.DelegateAdapter
 import com.effectivemobiletest.adapters.delegateAdapter.DelegateAdapterItem
 import com.squareup.picasso.Picasso
+
 
 class HotSalesAdapter(private val buyBtn: (hotSaleItem:HotSalesItem) -> Unit):
     DelegateAdapter<HotSalesAdapterModel, HotSalesAdapter.HotSalesViewHolder>(HotSalesAdapterModel::class.java) {
@@ -33,10 +35,12 @@ class HotSalesAdapter(private val buyBtn: (hotSaleItem:HotSalesItem) -> Unit):
     }
 
     override fun createViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
-        return HotSalesViewHolder(parent.context, HotSaleItemLayoutBinding.bind(parent))
+        val binding = HotSaleItemLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return HotSalesViewHolder(parent.context, binding)
     }
 
-    override fun bindViewHolder(model: HotSalesAdapterModel, viewHolder: HotSalesViewHolder,
+    override fun bindViewHolder(model: HotSalesAdapterModel,
+                                viewHolder: HotSalesViewHolder,
                                 payloads: List<DelegateAdapterItem.Payloadable>) {
         viewHolder.bind(model)
     }

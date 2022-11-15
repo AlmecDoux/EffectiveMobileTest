@@ -3,4 +3,6 @@
     <string name="select_category">Select Category</string>
     <string name="view_all">view all</string>
     <string name="new_">New</string>
+    <string name="see_more">see more</string>
+    <string name="hot_sales">Hot sales</string>
 </resources>
