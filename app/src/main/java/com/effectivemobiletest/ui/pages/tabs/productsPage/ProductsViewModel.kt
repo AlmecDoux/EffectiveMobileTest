@@ -6,8 +6,7 @@ import com.effectivemobile.domain.useCases.GetMainPageDataUseCase
 import com.effectivemobile.test.R
 import com.effectivemobiletest.App
 import com.effectivemobiletest.adapters.adapters.CategoriesAdapter
-import com.effectivemobiletest.adapters.adaptersModels.CategoriesAdapterModel
-import com.effectivemobiletest.adapters.adaptersModels.HotSalesAdapterModel
+import com.effectivemobiletest.adapters.adaptersModels.*
 import com.effectivemobiletest.adapters.delegateAdapter.DelegateAdapterItem
 import com.effectivemobiletest.events.Event
 import com.effectivemobiletest.extensions.asLiveData
@@ -27,15 +26,22 @@ class ProductsViewModel
     private val _categoryData = MutableLiveData<Event<List<DelegateAdapterItem>>>()
     val categoryData = _categoryData.asLiveData()
 
+    private val _bestSellerData = MutableLiveData<Event<List<DelegateAdapterItem>>>()
+    val bestSellerData = _bestSellerData.asLiveData()
 
     private suspend fun getHotSalesItems(){
         getMainPageDataUseCase.getMainPageData().collect{
             it.data?.let { mainPageData->
                 App.outLogs("data $mainPageData")
                 val hotSalesAdapterModel = arrayListOf<DelegateAdapterItem>()
+                val bestSellerAdapterModel = arrayListOf<DelegateAdapterItem>()
                 mainPageData.hotSalesItems.forEach{
                     hotSalesAdapterModel.add(HotSalesAdapterModel(hotSaleItem = it))
                 }
+                mainPageData.bestSellerItems.forEach{
+                    bestSellerAdapterModel.add(BestSellerAdapterModel(bestSalesItem = it))
+                }
+                _bestSellerData.post(Event(bestSellerAdapterModel))
                 _hotSalesData.post(Event(hotSalesAdapterModel))
             }
             it.error?.let {

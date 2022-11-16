@@ -4,113 +4,167 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/glStartPage"
+    <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="@dimen/begin_margin_page" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imgPoint"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerAddress"
-        app:layout_constraintEnd_toStartOf="@+id/spinnerAddress"
-        app:layout_constraintTop_toTopOf="@+id/spinnerAddress"
-        app:srcCompat="@drawable/address_point_icon" />
-
-    <androidx.appcompat.widget.AppCompatSpinner
-        android:id="@+id/spinnerAddress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/big_margin"
+        android:overScrollMode="never"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginEnd="@dimen/big_margin"
-        app:layout_constraintHorizontal_bias="1"
-        app:layout_constraintBottom_toBottomOf="@+id/spinnerAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinnerAddress"
-        app:layout_constraintTop_toTopOf="@+id/spinnerAddress"
-        app:srcCompat="@drawable/filter_icon" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/categoryTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/select_category"
-        android:textSize="@dimen/title_page_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/hotSalesLink"
-        app:layout_constraintStart_toStartOf="@+id/glStartPage"
-        app:layout_constraintTop_toBottomOf="@+id/imgPoint" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/glStartPage"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="@dimen/begin_margin_page" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/categoryLink"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/see_more"
-        android:textColor="@color/primaryColor"
-        android:textSize="@dimen/primary_text_page_size"
-        android:textStyle="bold"
-        android:layout_marginEnd="@dimen/small_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/hotSalesTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/hotSalesTitle" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgPoint"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/spinnerAddress"
+                app:layout_constraintEnd_toStartOf="@+id/spinnerAddress"
+                app:layout_constraintTop_toTopOf="@+id/spinnerAddress"
+                app:srcCompat="@drawable/address_point_icon" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/categoriesRV"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/categoryTitle" />
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spinnerAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/hotSalesTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/hot_sales"
-        android:textSize="@dimen/title_page_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/hotSalesLink"
-        app:layout_constraintStart_toStartOf="@+id/glStartPage"
-        app:layout_constraintTop_toBottomOf="@+id/categoriesRV" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginEnd="@dimen/big_margin"
+                app:layout_constraintBottom_toBottomOf="@+id/spinnerAddress"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1"
+                app:layout_constraintStart_toEndOf="@+id/spinnerAddress"
+                app:layout_constraintTop_toTopOf="@+id/spinnerAddress"
+                app:srcCompat="@drawable/filter_icon" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/hotSalesLink"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/small_margin"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/see_more"
-        android:textColor="@color/primaryColor"
-        android:textSize="@dimen/primary_text_page_size"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/categoryTitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/categoryTitle" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/categoryTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/select_category"
+                android:textSize="@dimen/title_page_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/hotSalesLink"
+                app:layout_constraintStart_toStartOf="@+id/glStartPage"
+                app:layout_constraintTop_toBottomOf="@+id/imgPoint" />
 
-    <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
-        android:id="@+id/hotSalesRV"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_margin"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/hotSalesTitle" />
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/categoryLink"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/see_more"
+                android:textColor="@color/primaryColor"
+                android:textSize="@dimen/primary_text_page_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/hotSalesTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/hotSalesTitle" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/categoriesRV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/categoryTitle" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hotSalesTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/hot_sales"
+                android:textSize="@dimen/title_page_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/hotSalesLink"
+                app:layout_constraintStart_toStartOf="@+id/glStartPage"
+                app:layout_constraintTop_toBottomOf="@+id/categoriesRV" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/hotSalesLink"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/see_more"
+                android:textColor="@color/primaryColor"
+                android:textSize="@dimen/primary_text_page_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/categoryTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/categoryTitle" />
+
+            <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
+                android:id="@+id/hotSalesRV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/small_margin"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hotSalesTitle" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bestSellerTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/best_seller"
+                android:textSize="@dimen/title_page_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/bestSellerLink"
+                app:layout_constraintStart_toStartOf="@+id/glStartPage"
+                app:layout_constraintTop_toBottomOf="@+id/hotSalesRV" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/bestSellerLink"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/small_margin"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/see_more"
+                android:textColor="@color/primaryColor"
+                android:textSize="@dimen/primary_text_page_size"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/bestSellerTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/bestSellerTitle" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/bestSellerRV"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bestSellerTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

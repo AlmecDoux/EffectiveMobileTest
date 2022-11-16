@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="250dp"
-    android:layout_height="400dp"
+    android:layout_width="181dp"
+    android:layout_height="227dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/big_round"
     app:cardElevation="0dp">
@@ -11,21 +11,23 @@
         android:layout_height="match_parent">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:id="@+id/favoriteBestSellerItem"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:scaleType="center"
             android:src="@drawable/stroke_heart"
-            android:layout_marginTop="@dimen/medium_margin"
-            android:layout_marginEnd="@dimen/big_margin"
+            android:layout_marginTop="@dimen/small_margin"
+            android:layout_marginEnd="@dimen/medium_margin"
             android:background="@drawable/white_rounden_point"
             android:elevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgBestSellerItem"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:scaleType="center"
+            android:scaleType="centerInside"
             app:layout_constraintBottom_toTopOf="@+id/discountPrice"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,8 +66,9 @@
             android:textFontWeight="400"
             android:maxLines="1"
             android:ellipsize="end"
-            android:layout_marginBottom="@dimen/big_margin"
-            android:layout_marginStart="21dp"
+            android:textSize="@dimen/small_page_size"
+            android:layout_marginBottom="@dimen/medium_margin"
+            android:layout_marginStart="@dimen/medium_margin"
             app:layout_constraintHorizontal_bias="0"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
