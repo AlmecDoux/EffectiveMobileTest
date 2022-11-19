@@ -17,5 +17,8 @@ class HotSalesModel(
         iconNew.visibility = if(hotSalesItem.isNew) View.VISIBLE else View.GONE
         Picasso.get().load(hotSalesItem.pictureURL).into(imgHotSaleItem)
     }
+    override fun getSpanSize(totalSpanCount: Int, position: Int, itemCount: Int): Int {
+        return totalSpanCount
+    }
 
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView android:layout_width="181dp"
+<androidx.cardview.widget.CardView
+    android:layout_width="181dp"
     android:layout_height="227dp"
     app:cardCornerRadius="@dimen/big_round"
     app:cardElevation="0dp"
@@ -14,11 +15,11 @@
             android:id="@+id/favoriteBestSellerItem"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:scaleType="center"
-            android:src="@drawable/stroke_heart"
+            android:scaleType="centerInside"
+            android:src="@drawable/favorite_point_icon"
             android:layout_marginTop="@dimen/small_margin"
             android:layout_marginEnd="@dimen/medium_margin"
-            android:background="@drawable/white_rounden_point"
+            android:background="@drawable/white_rounded_point"
             android:elevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>

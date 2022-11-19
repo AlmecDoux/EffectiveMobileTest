@@ -14,4 +14,5 @@
         <item name="contentInsetStart">0dp</item>
         <item name="android:background">@color/backgroundColor</item>
     </style>
+
 </resources>

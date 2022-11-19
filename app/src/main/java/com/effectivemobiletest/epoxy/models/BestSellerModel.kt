@@ -13,8 +13,11 @@ class BestSellerModel(
 ): ViewBindingKotlinModel<BlockBestSellerItemLayoutBinding>(R.layout.block_best_seller_item_layout) {
 
     override fun BlockBestSellerItemLayoutBinding.bind() {
+        favoriteBestSellerItem.isSelected = bestSalesItem.isFavorites
         favoriteBestSellerItem.setOnClickListener{
-            clickFavorite.invoke(bestSalesItem.id, true)
+            val isSelected = !favoriteBestSellerItem.isSelected
+            clickFavorite.invoke(bestSalesItem.id, isSelected)
+            favoriteBestSellerItem.isSelected = isSelected
         }
         Picasso.get().load(bestSalesItem.pictureURL).into(imgBestSellerItem)
         discountPrice.text = bestSalesItem.discountPrice.toString()
@@ -25,6 +28,6 @@ class BestSellerModel(
         }
     }
     override fun getSpanSize(totalSpanCount: Int, position: Int, itemCount: Int): Int {
-        return totalSpanCount
+        return totalSpanCount/2
     }
 }

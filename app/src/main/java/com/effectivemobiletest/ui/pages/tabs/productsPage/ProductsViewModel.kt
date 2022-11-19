@@ -6,9 +6,7 @@ import com.effectivemobile.domain.useCases.GetMainPageDataUseCase
 import com.effectivemobile.test.R
 import com.effectivemobiletest.App
 import com.effectivemobiletest.App.Companion.outLogs
-import com.effectivemobiletest.epoxy.models.mapperClasses.EpoxyData
-import com.effectivemobiletest.epoxy.models.mapperClasses.EpoxyHeaderTitleItem
-import com.effectivemobiletest.epoxy.models.mapperClasses.mapToEpoxy
+import com.effectivemobiletest.epoxy.models.mapperClasses.*
 import com.effectivemobiletest.events.Event
 import com.effectivemobiletest.extensions.asLiveData
 import com.effectivemobiletest.extensions.post
@@ -29,8 +27,13 @@ class ProductsViewModel
         getMainPageDataUseCase.getMainPageData().collect{
             it.data?.let { mainPageData->
                 val bestSalesAdapterModel = arrayListOf<EpoxyData>()
+                bestSalesAdapterModel.add(EpoxyLocationItem(
+                    listLocations = listOf("Zihuatanejo, Gro"),
+                    clickOnFilter = { outLogs("clickFilter") },
+                    chooseLocation = {}
+                ))
                 bestSalesAdapterModel.add(EpoxyHeaderTitleItem(
-                    headerTitle = "Sele",
+                    headerTitle = "Select Category",
                     clickLink = {
                         outLogs("CLICK LINK")
                     }
@@ -38,8 +41,14 @@ class ProductsViewModel
                 bestSalesAdapterModel.add(categoryDataBuilder.mapToEpoxy {
                     outLogs("click category: $it")
                 })
+                bestSalesAdapterModel.add(EpoxySearchItem(
+                    search = { outLogs(it) },
+                    qrBtnClick = {
+                        outLogs("qrClick")
+                    }
+                ))
                 bestSalesAdapterModel.add(EpoxyHeaderTitleItem(
-                    headerTitle = "Select HotSales",
+                    headerTitle = "Hot sales",
                     clickLink = {
                         outLogs("CLICK LINK")
                     }
@@ -73,7 +82,7 @@ class ProductsViewModel
 
     private val categoryDataBuilder = arrayListOf(
         CategoryItem(id = 1, img = R.drawable.phone_icon, title = "Phone"),
-        CategoryItem(id = 2, img = R.drawable.phone_icon, title = "Phone2"),
+        CategoryItem(id = 2, img = R.drawable.search_icon, title = "Phone2"),
         CategoryItem(id = 3, img = R.drawable.phone_icon, title = "Phone3"),
         CategoryItem(id = 4, img = R.drawable.phone_icon, title = "Phone4"),
         CategoryItem(id = 5, img = R.drawable.phone_icon, title = "Phone5"),

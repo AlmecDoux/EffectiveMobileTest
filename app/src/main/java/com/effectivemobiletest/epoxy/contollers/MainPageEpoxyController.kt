@@ -1,16 +1,16 @@
 package com.effectivemobiletest.epoxy.contollers
 
+import android.view.View
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.airbnb.epoxy.Carousel
+import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.TypedEpoxyController
 import com.airbnb.epoxy.carousel
+import com.effectivemobile.test.R
 import com.effectivemobiletest.decorations.marginDecorations.CenterZoomLinearLayoutManager
-import com.effectivemobiletest.epoxy.contollers.customEpoxyViews.NonSnappingHorizontalCarouselModel_
-import com.effectivemobiletest.epoxy.models.BestSellerModel
-import com.effectivemobiletest.epoxy.models.CategoryModel
-import com.effectivemobiletest.epoxy.models.HeaderTitleModel
-import com.effectivemobiletest.epoxy.models.HotSalesModel
+import com.effectivemobiletest.epoxy.contollers.customEpoxyViews.*
+import com.effectivemobiletest.epoxy.models.*
 import com.effectivemobiletest.epoxy.models.mapperClasses.*
 
 class MainPageEpoxyController(): TypedEpoxyController<List<EpoxyData>>() {
@@ -22,8 +22,25 @@ class MainPageEpoxyController(): TypedEpoxyController<List<EpoxyData>>() {
                 is EpoxyHeaderTitleItem -> addHeaderTitleItem(cellData)
                 is EpoxyCategoryItems -> addCategoriesItems(cellData)
                 is EpoxyBestSellerItem -> addBestSellerItems(cellData)
+                is EpoxyLocationItem -> addLocationItem(cellData)
+                is EpoxySearchItem -> addSearchItem(cellData)
             }
         }
+    }
+
+    private fun addSearchItem(epoxySearchItem: EpoxySearchItem) {
+        SearchItemModel(
+            epoxySearchItem = epoxySearchItem
+        ).id("search")
+            .addTo(this)
+
+    }
+
+    private fun addLocationItem(locationItem: EpoxyLocationItem) {
+        EpoxyLocationModel(
+            locationItem.listLocations[0], locationItem.clickOnFilter, locationItem.chooseLocation)
+            .id("locationItem")
+            .addTo(this)
     }
 
     private fun addBestSellerItems(bestSellerItem: EpoxyBestSellerItem) {
@@ -33,12 +50,13 @@ class MainPageEpoxyController(): TypedEpoxyController<List<EpoxyData>>() {
             BestSellerModel(it, bestSellerItem.clickFavorite, bestSellerItem.clickOn)
                 .id(it.id)
         }
-        carousel {
-            id("carousel")
+        gridVerticalEpoxyView {
+            id("bestSeller")
             models(items)
             hasFixedSize(true)
-            padding(Carousel.Padding(10,0,10,0,10))
-            numViewsToShowOnScreen(2.0f)
+            paddingDp(10)
+            spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount}
+
         }
     }
 
@@ -50,12 +68,12 @@ class MainPageEpoxyController(): TypedEpoxyController<List<EpoxyData>>() {
                 .id(it.id)
         }
 
-
-        NonSnappingHorizontalCarouselModel_()
-            .id("carousel")
-            .models(items)
-            .hasFixedSize(true)
-            .addTo(this)
+        nonSnappingHorizontalCarousel {
+            id("carousel")
+            models(items)
+            hasFixedSize(true)
+            onBind {_, carousel, _ -> carousel.overScrollMode = View.OVER_SCROLL_NEVER}
+        }
 
     }
 
@@ -70,10 +88,11 @@ class MainPageEpoxyController(): TypedEpoxyController<List<EpoxyData>>() {
             id("carousel")
             models(items)
             hasFixedSize(true)
-            padding(Carousel.Padding(10,0,10,0,10))
+            paddingDp(10)
             numViewsToShowOnScreen(1.0f)
             onBind { _, carousel, id ->
                 carousel.layoutManager = CenterZoomLinearLayoutManager(carousel.context)
+                carousel.overScrollMode = View.OVER_SCROLL_NEVER
                 val snapHelper = LinearSnapHelper()
                 carousel.scrollToPosition(1)
                 carousel.post {
@@ -97,5 +116,4 @@ class MainPageEpoxyController(): TypedEpoxyController<List<EpoxyData>>() {
             .addTo(this)
 
     }
-
 }

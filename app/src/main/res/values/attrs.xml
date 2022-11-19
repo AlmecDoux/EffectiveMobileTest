@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="NavigationBottomBar">
+        <attr name="menuLayout" format="reference" />
+        <attr name="selectedItemBackground" format="reference" />
+        <attr name="unSelectedItemBackground" format="reference" />
+        <attr name="selectedItemTint" format="color" />
+        <attr name="unSelectedItemTint" format="color" />
+        <attr name="elevationItem" format="integer" />
+    </declare-styleable>
+</resources>
