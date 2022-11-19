@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="@dimen/medium_margin">
+    android:paddingHorizontal="@dimen/begin_margin_page">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/categoryImg"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="71dp"
+        android:layout_height="71dp"
         app:srcCompat="@drawable/phone_icon"
         app:tint="@color/white"
         android:scaleType="centerInside"

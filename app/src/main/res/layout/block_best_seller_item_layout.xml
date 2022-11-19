@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="181dp"
+
+<androidx.cardview.widget.CardView android:layout_width="181dp"
     android:layout_height="227dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="@dimen/big_round"
-    app:cardElevation="0dp">
+    app:cardElevation="0dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -32,14 +32,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.503"
-            app:srcCompat="@drawable/samsung" />
+            app:layout_constraintVertical_bias="0.503" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/discountPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$1,047"
+            android:text=""
             android:textStyle="bold"
             android:layout_marginBottom="@dimen/small_margin"
             android:textSize="@dimen/primary_text_page_size"
@@ -50,7 +49,7 @@
             android:id="@+id/priceWithOutDiscount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="$1,047"
+            android:text=""
             android:textColor="@color/grey"
             android:textSize="@dimen/small_page_size"
             android:textStyle="bold"
@@ -62,7 +61,7 @@
             android:id="@+id/productTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Samsung Galaxy s20 Ultra"
+            android:text=""
             android:textFontWeight="400"
             android:maxLines="1"
             android:ellipsize="end"
