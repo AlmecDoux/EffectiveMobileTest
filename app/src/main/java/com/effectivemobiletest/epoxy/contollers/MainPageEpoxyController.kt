@@ -55,6 +55,7 @@ class MainPageEpoxyController(): TypedEpoxyController<List<EpoxyData>>() {
             models(items)
             hasFixedSize(true)
             paddingDp(10)
+            initialPrefetchItemCount(2)
             spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount}
 
         }

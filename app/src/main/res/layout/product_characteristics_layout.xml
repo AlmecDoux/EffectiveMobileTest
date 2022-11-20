@@ -5,7 +5,7 @@
     android:clipToPadding="false"
     android:elevation="8dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/rounded_panel"
     android:padding="@dimen/big_margin">
 
@@ -31,55 +31,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/white_heart" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/starIcon"
+    <RatingBar
+        android:id="@+id/rating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_margin"
-        android:layout_marginEnd="@dimen/small_margin"
+        style="?android:attr/ratingBarStyleIndicator"
+        android:numStars="5"
+        android:rating="5"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:theme="@style/RatingBar"
         app:layout_constraintStart_toStartOf="@+id/titleProductField"
-        app:layout_constraintTop_toBottomOf="@+id/titleProductField"
-        app:srcCompat="@drawable/star_icon" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/starIcon2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/small_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/starIcon"
-        app:layout_constraintStart_toEndOf="@+id/starIcon"
-        app:layout_constraintTop_toTopOf="@+id/starIcon"
-        app:srcCompat="@drawable/star_icon" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/starIcon3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/small_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/starIcon"
-        app:layout_constraintStart_toEndOf="@+id/starIcon2"
-        app:layout_constraintTop_toTopOf="@+id/starIcon"
-        app:srcCompat="@drawable/star_icon" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/starIcon4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/small_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/starIcon"
-        app:layout_constraintStart_toEndOf="@+id/starIcon3"
-        app:layout_constraintTop_toTopOf="@+id/starIcon"
-        app:srcCompat="@drawable/star_icon" />
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/starIcon5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/small_margin"
-        app:layout_constraintBottom_toBottomOf="@+id/starIcon"
-        app:layout_constraintStart_toEndOf="@+id/starIcon4"
-        app:layout_constraintTop_toTopOf="@+id/starIcon"
-        app:srcCompat="@drawable/star_icon" />
+        app:layout_constraintTop_toBottomOf="@+id/titleProductField" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tabsShop"
@@ -93,7 +55,7 @@
         app:layout_constraintEnd_toStartOf="@+id/tabsDetails"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/starIcon" />
+        app:layout_constraintTop_toBottomOf="@+id/rating" />
 
     <View
         android:id="@+id/view"
@@ -232,4 +194,47 @@
         android:textSize="@dimen/primary_text_page_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cpuField"/>
+
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/colorAndCapacityEV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleSelectColor" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/btnAddToCart"
+        android:layout_width="0dp"
+        android:layout_height="54dp"
+        android:background="@drawable/primary_rounded_button"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colorAndCapacityEV">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/add_to_cart"
+            android:textColor="@color/white"
+            android:textSize="@dimen/primary_text_page_size"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/fieldAmount"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="$1,500.00"
+            android:textColor="@color/white"
+            android:textSize="@dimen/primary_text_page_size"
+            android:textStyle="bold" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -14,5 +14,8 @@
         <item name="contentInsetStart">0dp</item>
         <item name="android:background">@color/backgroundColor</item>
     </style>
-
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/grey</item>
+        <item name="colorControlActivated">@color/gold</item>
+    </style>
 </resources>
