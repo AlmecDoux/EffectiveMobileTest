@@ -15,6 +15,7 @@ import com.effectivemobiletest.epoxy.models.mapperClasses.*
 
 class MainPageEpoxyController(): TypedEpoxyController<List<EpoxyData>>() {
 
+
     override fun buildModels(data: List<EpoxyData>) {
         data.forEach { cellData ->
             when(cellData) {
@@ -54,8 +55,7 @@ class MainPageEpoxyController(): TypedEpoxyController<List<EpoxyData>>() {
             id("bestSeller")
             models(items)
             hasFixedSize(true)
-            paddingDp(10)
-            initialPrefetchItemCount(2)
+            paddingRes(R.dimen.medium_margin)
             spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount}
 
         }

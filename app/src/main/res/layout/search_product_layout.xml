@@ -8,9 +8,10 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/searchField"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="34dp"
         android:hint="@string/search"
+        android:layout_marginStart="@dimen/medium_margin"
         android:layout_marginVertical="@dimen/medium_margin"
         android:background="@drawable/rounded_panel"
         android:textColorHint="@color/grey"
@@ -32,6 +33,7 @@
         android:background="@drawable/primary_rounded_point"
         android:scaleType="centerInside"
         android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/medium_margin"
         app:layout_constraintBottom_toBottomOf="@+id/searchField"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -23,7 +23,6 @@ class ProductCharacteristicsController:TypedEpoxyController<List<EpoxyData>>() {
                 is EpoxyProductCapacityItem -> {
                     addProductCapacityItem(data.indexOf(cellData), cellData)
                 }
-
             }
         }
     }
@@ -53,7 +52,7 @@ class ProductCharacteristicsController:TypedEpoxyController<List<EpoxyData>>() {
             models(items)
             hasFixedSize(true)
             //padding(Carousel.Padding(0,30,0,30,25))
-            onBind {_, carousel, _ -> carousel.overScrollMode = View.OVER_SCROLL_NEVER}
+            //onBind {_, carousel, _ -> carousel.overScrollMode = View.OVER_SCROLL_NEVER}
         }
     }
 
@@ -82,9 +81,7 @@ class ProductCharacteristicsController:TypedEpoxyController<List<EpoxyData>>() {
             models(items)
             hasFixedSize(true)
             //padding(Carousel.Padding(150,50,0,50,25))
-            onBind {model, carousel, _ ->
-                carousel.overScrollMode = View.OVER_SCROLL_NEVER
-            }
+            onBind {model, carousel, _ -> carousel.overScrollMode = View.OVER_SCROLL_NEVER }
         }
     }
 }
