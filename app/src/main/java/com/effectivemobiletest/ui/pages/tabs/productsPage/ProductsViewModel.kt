@@ -34,6 +34,7 @@ class ProductsViewModel
                 ))
                 bestSalesAdapterModel.add(EpoxyHeaderTitleItem(
                     headerTitle = "Select Category",
+                    linkText = "view all",
                     clickLink = {
                         outLogs("CLICK LINK")
                     }
@@ -49,6 +50,7 @@ class ProductsViewModel
                 ))
                 bestSalesAdapterModel.add(EpoxyHeaderTitleItem(
                     headerTitle = "Hot sales",
+                    linkText = "see more",
                     clickLink = {
                         outLogs("CLICK LINK")
                     }
@@ -56,6 +58,7 @@ class ProductsViewModel
                 bestSalesAdapterModel.add(mainPageData.hotSalesItems.mapToEpoxy())
                 bestSalesAdapterModel.add(EpoxyHeaderTitleItem(
                     headerTitle = "Best Sellers",
+                    linkText = "see more",
                     clickLink = {
                         outLogs("CLICK LINK")
                     }

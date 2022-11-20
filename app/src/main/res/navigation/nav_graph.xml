@@ -9,5 +9,6 @@
         android:id="@+id/tabsFragment"
         android:name="com.effectivemobiletest.ui.pages.tabs.TabsFragment"
         android:label="TabsFragment"
-        tools:layout="@layout/tabs_layout"/>
+        tools:layout="@layout/tabs_layout">
+    </fragment>
 </navigation>

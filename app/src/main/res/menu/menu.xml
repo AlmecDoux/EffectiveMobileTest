@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@id/home"
-        android:title="Home"
-        android:icon="@drawable/stroke_heart" />
+    <item android:id="@id/cartPageFragment"
+        android:title="@string/explorer"
+        android:icon="@drawable/market_icon" />
 
     <item android:id="@id/home"
-        android:title="Home"
-        android:icon="@drawable/stroke_heart"/>
+        android:title="@string/favorite"
+        android:icon="@drawable/white_heart"/>
 
     <item android:id="@id/home"
-        android:title="Home"
-        android:icon="@drawable/stroke_heart"/>
+        android:title="@string/profile"
+        android:icon="@drawable/profile_icon"/>
 
 
 </menu>

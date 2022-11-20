@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnBack"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/dark_rounded_button"
+        android:scaleType="centerInside"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginStart="@dimen/big_margin"
+        app:layout_constraintEnd_toStartOf="@+id/titlePage"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titlePage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/product_details"
+        android:textAlignment="center"
+        android:textSize="@dimen/medium_text_page_size"
+        android:textStyle="bold"
+        android:textColor="@color/blackColor"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toStartOf="@+id/marketBtn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btnBack"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/marketBtn"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:layout_marginEnd="@dimen/big_margin"
+        android:background="@drawable/primary_rounded_button"
+        android:scaleType="centerInside"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/titlePage"
+        app:layout_constraintTop_toTopOf="@+id/btnBack"
+        app:srcCompat="@drawable/market_icon" />
+
+    <com.airbnb.epoxy.EpoxyRecyclerView
+        android:id="@+id/photosProductCarousel"
+        android:layout_marginTop="@dimen/big_margin"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/titlePage" />
+
+    <include
+        layout="@layout/product_characteristics_layout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/photosProductCarousel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

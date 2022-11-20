@@ -7,4 +7,11 @@
     <string name="hot_sales">Hot sales</string>
     <string name="best_seller">Best Seller</string>
     <string name="search">Search</string>
+    <string name="explorer">Explorer</string>
+    <string name="favorite">Favorite</string>
+    <string name="profile">Profile</string>
+    <string name="product_details">Product Details</string>
+    <string name="shop">Shop</string>
+    <string name="features">Features</string>
+    <string name="details">Details</string>
 </resources>

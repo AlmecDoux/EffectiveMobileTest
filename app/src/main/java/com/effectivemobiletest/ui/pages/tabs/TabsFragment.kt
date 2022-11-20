@@ -25,7 +25,5 @@ class TabsFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val navHost = childFragmentManager.findFragmentById(R.id.tabsContainer) as NavHostFragment
-        val navController = navHost.navController
     }
 }

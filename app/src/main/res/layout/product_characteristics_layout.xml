@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clipToPadding="false"
+    android:elevation="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/rounded_panel"
+    android:padding="@dimen/big_margin">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleProductField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Galaxy Note 20 Ultra"
+        android:textSize="@dimen/title_page_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
+        app:layout_constraintEnd_toStartOf="@+id/btnBack"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnBack"
+        android:layout_width="37dp"
+        android:layout_height="37dp"
+        android:background="@drawable/dark_rounded_button"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/white_heart" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginEnd="@dimen/small_margin"
+        app:layout_constraintStart_toStartOf="@+id/titleProductField"
+        app:layout_constraintTop_toBottomOf="@+id/titleProductField"
+        app:srcCompat="@drawable/star_icon" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starIcon2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/small_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/starIcon"
+        app:layout_constraintStart_toEndOf="@+id/starIcon"
+        app:layout_constraintTop_toTopOf="@+id/starIcon"
+        app:srcCompat="@drawable/star_icon" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starIcon3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/small_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/starIcon"
+        app:layout_constraintStart_toEndOf="@+id/starIcon2"
+        app:layout_constraintTop_toTopOf="@+id/starIcon"
+        app:srcCompat="@drawable/star_icon" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starIcon4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/small_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/starIcon"
+        app:layout_constraintStart_toEndOf="@+id/starIcon3"
+        app:layout_constraintTop_toTopOf="@+id/starIcon"
+        app:srcCompat="@drawable/star_icon" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/starIcon5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/small_margin"
+        app:layout_constraintBottom_toBottomOf="@+id/starIcon"
+        app:layout_constraintStart_toEndOf="@+id/starIcon4"
+        app:layout_constraintTop_toTopOf="@+id/starIcon"
+        app:srcCompat="@drawable/star_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tabsShop"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:text="@string/shop"
+        android:textAlignment="center"
+        android:textSize="@dimen/medium_text_page_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/tabsDetails"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/starIcon" />
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="0dp"
+        android:layout_height="3dp"
+        android:layout_marginHorizontal="@dimen/small_margin"
+        android:layout_marginTop="@dimen/small_margin"
+        android:background="@drawable/primary_rounded_button"
+        app:layout_constraintEnd_toEndOf="@+id/tabsShop"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tabsShop" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tabsDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/details"
+        android:textAlignment="center"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/medium_text_page_size"
+        app:layout_constraintEnd_toStartOf="@+id/tabsFeatures"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tabsShop"
+        app:layout_constraintTop_toTopOf="@id/tabsShop" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tabsFeatures"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/features"
+        android:textAlignment="center"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/medium_text_page_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/tabsDetails"
+        app:layout_constraintTop_toTopOf="@id/tabsDetails" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/cpuIcon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="@dimen/big_margin"
+        android:layout_marginStart="@dimen/medium_margin"
+        app:layout_constraintEnd_toStartOf="@+id/cameraIcon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:srcCompat="@drawable/cpu_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cpuField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exynos 990"
+        android:layout_marginTop="@dimen/small_margin"
+        android:textSize="@dimen/small_page_size"
+        android:textColor="@color/grey"
+        app:layout_constraintEnd_toEndOf="@+id/cpuIcon"
+        app:layout_constraintStart_toStartOf="@+id/cpuIcon"
+        app:layout_constraintTop_toBottomOf="@+id/cpuIcon"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/cameraIcon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/ramIcon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cpuIcon"
+        app:layout_constraintTop_toTopOf="@+id/cpuIcon"
+        app:srcCompat="@drawable/camera_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cameraField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exynos 990"
+        android:layout_marginTop="@dimen/small_margin"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/small_page_size"
+        app:layout_constraintEnd_toEndOf="@+id/cameraIcon"
+        app:layout_constraintStart_toStartOf="@+id/cameraIcon"
+        app:layout_constraintTop_toBottomOf="@+id/cameraIcon" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ramIcon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/sdIcon"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/cameraIcon"
+        app:layout_constraintTop_toTopOf="@+id/cameraIcon"
+        app:srcCompat="@drawable/ram_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ramField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exynos 990"
+        android:layout_marginTop="@dimen/small_margin"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/small_page_size"
+        app:layout_constraintEnd_toEndOf="@+id/ramIcon"
+        app:layout_constraintStart_toStartOf="@+id/ramIcon"
+        app:layout_constraintTop_toBottomOf="@+id/cameraIcon" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/sdIcon"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_marginEnd="@dimen/medium_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/ramIcon"
+        app:layout_constraintTop_toTopOf="@+id/ramIcon"
+        app:srcCompat="@drawable/sd_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/sdField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Exynos 990"
+        android:layout_marginTop="@dimen/small_margin"
+        android:textColor="@color/grey"
+        android:textSize="@dimen/small_page_size"
+        app:layout_constraintEnd_toEndOf="@+id/sdIcon"
+        app:layout_constraintStart_toStartOf="@+id/sdIcon"
+        app:layout_constraintTop_toBottomOf="@+id/cameraIcon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/titleSelectColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/medium_margin"
+        android:text="Select color and capacity"
+        android:textSize="@dimen/primary_text_page_size"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cpuField"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@
     <com.effectivemobiletest.ui.views.bottomNavigationLayout.NavigationBottomBar
         android:id="@+id/navigationBar"
         android:layout_width="0dp"
-        android:layout_height="72dp"
+        android:layout_height="wrap_content"
         app:menuLayout="@menu/menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

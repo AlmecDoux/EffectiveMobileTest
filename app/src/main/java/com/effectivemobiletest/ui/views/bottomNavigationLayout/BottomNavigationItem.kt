@@ -18,26 +18,33 @@ class BottomNavigationItem @JvmOverloads constructor(
     private val factor = context.resources.displayMetrics.density
     init {
 
-        val size = (35 * factor).toInt()
-        val margin = (5 * factor).toInt()
-        elevation = 5f
+        val size = (25 * factor).toInt()
         val layoutParams = LinearLayoutCompat.LayoutParams(size, size)
         layoutParams.gravity = Gravity.CENTER
         layoutParams.weight = 1f
-        layoutParams.setMargins(margin, margin,margin, margin)
-        setPadding(margin,margin, margin, margin)
         setLayoutParams(layoutParams)
-
+        //scaleType = ScaleType.CENTER_CROP
     }
 
     fun setNavigationMenuItem(navigationItem: MenuItem){
         this.navigationItem = navigationItem
         navigationItem.icon?.let {
             setImageDrawable(it)
-            scaleType = ScaleType.FIT_CENTER
+            scaleType = ScaleType.CENTER_INSIDE
         }
     }
     fun getMenuDestination():Int{
         return navigationItem?.itemId?:-1
     }
+
+    override fun setSelected(selected: Boolean) {
+        if(selected){
+            setColorFilter(ContextCompat.getColor(context, R.color.primaryColor))
+        }
+        else{
+            setColorFilter(ContextCompat.getColor(context, R.color.white))
+        }
+        super.setSelected(selected)
+    }
+
 }

@@ -16,6 +16,7 @@ class HeaderTitleModel(
     override fun HeaderTitleLayoutBinding.bind() {
 
         headerTitle.text = headerTitleItem.headerTitle
+        headerLink.text = headerTitleItem.linkText
         headerLink.setOnClickListener {
             headerTitleItem.clickLink.invoke()
         }

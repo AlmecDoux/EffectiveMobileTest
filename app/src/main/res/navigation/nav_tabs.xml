@@ -9,5 +9,22 @@
         android:id="@+id/productsPageFragment"
         android:name="com.effectivemobiletest.ui.pages.tabs.productsPage.ProductsPageFragment"
         android:label="ProductsPageFragment"
-        tools:layout="@layout/products_page_layout"/>
+        tools:layout="@layout/products_page_layout">
+        <action
+            android:id="@+id/action_productsPageFragment_to_cartPageFragment"
+            app:destination="@id/cartPageFragment" />
+        <action
+            android:id="@+id/action_productsPageFragment_to_detailsProductFragment"
+            app:destination="@id/detailsProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartPageFragment"
+        android:name="com.effectivemobiletest.ui.pages.cartPage.CartPageFragment"
+        android:label="CartPageFragment"
+        tools:layout="@layout/card_page_layout"/>
+    <fragment
+        android:id="@+id/detailsProductFragment"
+        android:name="com.effectivemobiletest.ui.pages.detailsProductPage.DetailsProductFragment"
+        android:label="DetailsProductFragment"
+        tools:layout="@layout/detail_product_layout"/>
 </navigation>
