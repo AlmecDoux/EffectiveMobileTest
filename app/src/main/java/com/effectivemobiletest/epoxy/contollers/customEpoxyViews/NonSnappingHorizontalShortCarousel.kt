@@ -13,7 +13,6 @@ class NonSnappingHorizontalShortCarousel(context: Context): Carousel(context) {
     override fun createLayoutManager(): LayoutManager {
         val layoutManager = LinearLayoutManager(context)
         layoutManager.orientation = LinearLayoutManager.HORIZONTAL
-        layoutManager.stackFromEnd = true
         return layoutManager
     }
     override fun getSnapHelperFactory(): SnapHelperFactory? {

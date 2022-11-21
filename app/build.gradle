@@ -70,4 +70,5 @@ dependencies {
     kapt "com.airbnb.android:epoxy-processor:$epoxy_version"
     implementation "com.airbnb.android:epoxy-annotations:$epoxy_version"
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 }

@@ -6,8 +6,8 @@
     android:elevation="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/rounded_panel"
-    android:padding="@dimen/big_margin">
+    android:background="@drawable/half_rounded_panel"
+    android:padding="@dimen/medium_margin">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/titleProductField"
@@ -38,7 +38,7 @@
         style="?android:attr/ratingBarStyleIndicator"
         android:numStars="5"
         android:rating="5"
-        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/small_margin"
         android:theme="@style/RatingBar"
         app:layout_constraintStart_toStartOf="@+id/titleProductField"
         app:layout_constraintTop_toBottomOf="@+id/titleProductField" />
@@ -47,7 +47,7 @@
         android:id="@+id/tabsShop"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/small_margin"
         android:text="@string/shop"
         android:textAlignment="center"
         android:textSize="@dimen/medium_text_page_size"
@@ -99,7 +99,7 @@
         android:id="@+id/cpuIcon"
         android:layout_width="28dp"
         android:layout_height="28dp"
-        android:layout_marginTop="@dimen/big_margin"
+        android:layout_marginTop="@dimen/small_margin"
         android:layout_marginStart="@dimen/medium_margin"
         app:layout_constraintEnd_toStartOf="@+id/cameraIcon"
         app:layout_constraintHorizontal_bias="0.5"
@@ -189,7 +189,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textStyle="bold"
-        android:layout_marginTop="@dimen/medium_margin"
+        android:layout_marginTop="@dimen/small_margin"
         android:text="@string/select_color_and_capacity"
         android:textSize="@dimen/primary_text_page_size"
         app:layout_constraintStart_toStartOf="parent"
@@ -200,6 +200,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleSelectColor" />
