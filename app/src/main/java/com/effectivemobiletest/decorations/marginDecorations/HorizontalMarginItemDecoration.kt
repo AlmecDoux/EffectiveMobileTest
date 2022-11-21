@@ -2,6 +2,8 @@ package com.effectivemobiletest.decorations.marginDecorations
 
 import android.graphics.Rect
 import android.view.View
+import androidx.core.view.get
+import androidx.core.view.size
 import androidx.recyclerview.widget.RecyclerView
 
 class HorizontalMarginItemDecoration(private val spaceSize: Int)
@@ -12,8 +14,12 @@ class HorizontalMarginItemDecoration(private val spaceSize: Int)
         state: RecyclerView.State
     ) {
         with(outRect) {
-            left = spaceSize
-            right = spaceSize
+            if (view == parent[0]){
+                left = spaceSize
+            }
+            else if(view == parent[parent.size - 1]) {
+                right = spaceSize
+            }
         }
     }
 }

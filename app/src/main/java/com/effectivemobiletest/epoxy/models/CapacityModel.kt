@@ -1,13 +1,8 @@
 package com.effectivemobiletest.epoxy.models
 
-import android.content.res.ColorStateList
-import android.graphics.Color
-import android.view.View
 import androidx.core.content.ContextCompat
 import com.effectivemobile.test.R
 import com.effectivemobile.test.databinding.CapacityItemLayoutBinding
-import com.effectivemobile.test.databinding.ColorProductLayoutBinding
-import com.effectivemobiletest.App
 import com.effectivemobiletest.epoxy.ViewBindingKotlinModel
 import com.effectivemobiletest.epoxy.models.mapperClasses.Capacity
 
