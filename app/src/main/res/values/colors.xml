@@ -13,4 +13,5 @@
     <color name="blackColor">#010035</color>
     <color name="grey">#CCCCCC</color>
     <color name="gold">#FFB800</color>
+    <color name="transparent_white">#40FFFFFF</color>
 </resources>

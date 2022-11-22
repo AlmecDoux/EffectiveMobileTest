@@ -2,30 +2,31 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:paddingHorizontal="@dimen/begin_margin_page">
+    android:layout_height="wrap_content">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/categoryImg"
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:layout_margin="@dimen/begin_margin_page"
         app:srcCompat="@drawable/phone_icon"
-        app:tint="@color/white"
+        app:tint="@color/category_tint_image_color"
         android:scaleType="centerInside"
-        android:background="@drawable/primary_rounded_point"
+        android:background="@drawable/category_point_state"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/categoryName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Phones"
         android:maxLines="1"
         android:textStyle="bold"
+        android:textColor="@color/category_title_color"
         android:textAlignment="center"
-        android:textSize="@dimen/primary_text_page_size"
+        android:textSize="@dimen/small_page_size"
         android:layout_marginTop="@dimen/small_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

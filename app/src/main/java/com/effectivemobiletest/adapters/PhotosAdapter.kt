@@ -1,4 +1,4 @@
-package com.effectivemobiletest.epoxy.adapters
+package com.effectivemobiletest.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -3,8 +3,6 @@ package com.effectivemobiletest.epoxy.contollers
 import android.view.View
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.airbnb.epoxy.Carousel
-import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.TypedEpoxyController
 import com.airbnb.epoxy.carousel
 import com.effectivemobile.test.R
@@ -23,7 +21,7 @@ class MainPageEpoxyController : TypedEpoxyController<List<EpoxyData>>() {
             when(cellData) {
                 is EpoxyHotSalesItem -> addHotSalesItems(cellData)
                 is EpoxyHeaderTitleItem -> addHeaderTitleItem(cellData)
-                is EpoxyCategoryItems -> addCategoriesItems(cellData)
+                is EpoxyCategoryItems -> addCategoriesItems(data.indexOf(cellData), cellData)
                 is EpoxyBestSellerItem -> addBestSellerItems(cellData)
                 is EpoxyLocationItem -> addLocationItem(cellData)
                 is EpoxySearchItem -> addSearchItem(cellData)
@@ -59,20 +57,31 @@ class MainPageEpoxyController : TypedEpoxyController<List<EpoxyData>>() {
             hasFixedSize(true)
             paddingRes(R.dimen.medium_margin)
             spanSizeOverride { totalSpanCount, _, _ -> totalSpanCount}
-
         }
     }
 
-    private fun addCategoriesItems(categoryItems: EpoxyCategoryItems) {
-        if (categoryItems.categoryItem.isEmpty()) return
-        val itemsHotSale = categoryItems.categoryItem
-        val items = itemsHotSale.map {
-            CategoryModel(it, categoryItems.clickOn)
-                .id(it.id)
+    private fun addCategoriesItems(indexOfModel:Int, categoryItems: EpoxyCategoryItems) {
+        if (categoryItems.categoryItems.isEmpty()) return
+        val itemsCategories = categoryItems.categoryItems
+        val items = itemsCategories.mapIndexed { id, itemCategory->
+            CategoryModel(itemCategory, listenerOfSelect = { selected, idOfCategory->
+                if(selected) return@CategoryModel
+                categoryItems.categoryItems.forEachIndexed { index, category ->
+                    if(index == id){
+                        category.isSelected = true
+                    }
+                    else{
+                        if(category.isSelected){
+                            category.isSelected = false
+                        }
+                    }
+                }
+                categoryItems.clickOn(idOfCategory)
+                this.notifyModelChanged(indexOfModel)
+            }).id(itemCategory.categoryItem.id)
         }
-
         nonSnappingHorizontalCarousel {
-            id("carousel")
+            id("carouselCategories")
             models(items)
             hasFixedSize(true)
             onBind {_, carousel, _ -> carousel.overScrollMode = View.OVER_SCROLL_NEVER}
@@ -88,7 +97,7 @@ class MainPageEpoxyController : TypedEpoxyController<List<EpoxyData>>() {
                 .id(it.id)
         }
         carousel {
-            id("carousel")
+            id("carouselHotSalesItems")
             models(items)
             hasFixedSize(true)
             paddingDp(10)
@@ -115,7 +124,7 @@ class MainPageEpoxyController : TypedEpoxyController<List<EpoxyData>>() {
 
     private fun addHeaderTitleItem(epoxyHeaderTitleItem: EpoxyHeaderTitleItem){
         HeaderTitleModel(epoxyHeaderTitleItem)
-            .id("header")
+            .id("headerTitle")
             .addTo(this)
 
     }

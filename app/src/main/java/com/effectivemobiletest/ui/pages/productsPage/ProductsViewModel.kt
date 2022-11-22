@@ -84,14 +84,13 @@ class ProductsViewModel
 
     private val categoryDataBuilder = arrayListOf(
         CategoryItem(id = 1, img = R.drawable.phone_icon, title = "Phone"),
-        CategoryItem(id = 2, img = R.drawable.search_icon, title = "Phone2"),
-        CategoryItem(id = 3, img = R.drawable.phone_icon, title = "Phone3"),
-        CategoryItem(id = 4, img = R.drawable.phone_icon, title = "Phone4"),
-        CategoryItem(id = 5, img = R.drawable.phone_icon, title = "Phone5"),
-        CategoryItem(id = 6, img = R.drawable.phone_icon, title = "Phone6"),
-        CategoryItem(id = 7, img = R.drawable.phone_icon, title = "Phone7"),
-        CategoryItem(id = 8, img = R.drawable.phone_icon, title = "Phone8"),
-        CategoryItem(id = 9, img = R.drawable.phone_icon, title = "Phone9"),
+        CategoryItem(id = 2, img = R.drawable.computer_icon, title = "Computer"),
+        CategoryItem(id = 3, img = R.drawable.health_icon, title = "Health"),
+        CategoryItem(id = 4, img = R.drawable.books_icon, title = "Books"),
+        CategoryItem(id = 5, img = R.drawable.phone_icon, title = "Phone"),
+        CategoryItem(id = 6, img = R.drawable.computer_icon, title = "Computer"),
+        CategoryItem(id = 7, img = R.drawable.health_icon, title = "Health"),
+        CategoryItem(id = 8, img = R.drawable.books_icon, title = "Books")
 
     )
 

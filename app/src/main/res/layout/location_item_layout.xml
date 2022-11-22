@@ -13,10 +13,14 @@
         app:layout_constraintEnd_toStartOf="@+id/locationsSpinner"
         app:layout_constraintTop_toTopOf="@+id/locationsSpinner"
         app:srcCompat="@drawable/address_point_icon" />
-    <androidx.appcompat.widget.AppCompatSpinner
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/locationsSpinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Your city"
+        android:textStyle="bold"
+        android:includeFontPadding="false"
+        android:textSize="@dimen/primary_text_page_size"
         android:layout_marginVertical="@dimen/medium_margin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

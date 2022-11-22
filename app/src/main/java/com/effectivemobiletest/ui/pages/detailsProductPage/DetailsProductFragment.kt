@@ -8,7 +8,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.effectivemobile.domain.annotations.MainDispatcher
 import com.effectivemobile.test.databinding.DetailProductLayoutBinding
 import com.effectivemobiletest.decorations.marginDecorations.CenterZoomLinearLayoutManager
-import com.effectivemobiletest.epoxy.adapters.PhotosAdapter
+import com.effectivemobiletest.adapters.PhotosAdapter
 import com.effectivemobiletest.epoxy.contollers.ProductCharacteristicsController
 import com.effectivemobiletest.ui.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint

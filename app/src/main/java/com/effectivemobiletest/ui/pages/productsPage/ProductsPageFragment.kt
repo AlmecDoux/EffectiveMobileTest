@@ -33,8 +33,7 @@ class ProductsPageFragment: BaseFragment<ProductsPageLayoutBinding, ProductsView
     override fun setUpViewsBinding() {
         val layoutManager = GridLayoutManager(requireContext(), 2)
         layoutManager.spanSizeLookup = controller.spanSizeLookup
-        controller.adapter
-        binding.epoxyRecyclerView.setController(controller)
+
         binding.navigationBar.setupWithNavController(findNavController())
     }
     override fun observeData() {

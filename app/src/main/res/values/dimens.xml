@@ -4,6 +4,7 @@
     <dimen name="small_margin">5dp</dimen>
     <dimen name="medium_margin">18dp</dimen>
     <dimen name="big_margin">27dp</dimen>
+    <dimen name="grand_margin">35dp</dimen>
     <dimen name="title_page_size">25sp</dimen>
     <dimen name="text_page_size">12sp</dimen>
     <dimen name="medium_text_page_size">18sp</dimen>

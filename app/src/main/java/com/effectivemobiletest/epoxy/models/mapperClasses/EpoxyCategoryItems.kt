@@ -3,14 +3,14 @@ package com.effectivemobiletest.epoxy.models.mapperClasses
 import com.effectivemobile.domain.models.subtypes.CategoryItem
 
 data class EpoxyCategoryItems(
-    val categoryItem: List<CategoryItem>,
+    val categoryItems: List<EpoxyCategoryItem>,
     val clickOn:(idCategory:Int)->Unit
 ):EpoxyData()
 
 fun List<CategoryItem>.mapToEpoxy(clickOn:(idCategory:Int)->Unit):EpoxyCategoryItems{
     return EpoxyCategoryItems(
-        categoryItem = this.map {
-            it
+        categoryItems = this.mapIndexed {id, it->
+            EpoxyCategoryItem(it, isSelected = id == 0)
         },
         clickOn = clickOn
     )

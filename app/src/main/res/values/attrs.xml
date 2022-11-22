@@ -8,4 +8,10 @@
         <attr name="unSelectedItemTint" format="color" />
         <attr name="elevationItem" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="HeaderTitleLayout">
+        <attr name="textHeader" format="string" />
+        <attr name="textLink" format="string" />
+    </declare-styleable>
+
 </resources>

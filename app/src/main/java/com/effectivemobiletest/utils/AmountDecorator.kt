@@ -16,7 +16,7 @@ class AmountDecorator {
         fun getNormalAmountToStringWithCurrency(amount: Int, fraction:Int = 0):String{
             val currency = "$"
             return if(currency.isNotEmpty()){
-                getNormalAmountToString(amount = amount, fraction)+" "+currency
+                currency+getNormalAmountToString(amount = amount, fraction)
             } else{
                 getNormalAmountToString(amount = amount, fraction)
             }
