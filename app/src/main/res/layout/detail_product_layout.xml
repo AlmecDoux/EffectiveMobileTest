@@ -48,12 +48,13 @@
         app:layout_constraintTop_toTopOf="@+id/btnBack"
         app:srcCompat="@drawable/market_icon" />
 
-    <com.airbnb.epoxy.EpoxyRecyclerView
+    <com.jackandphantom.carouselrecyclerview.CarouselRecyclerview
         android:id="@+id/photosProductCarousel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/big_margin"
         android:overScrollMode="never"
+        android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/include"
         app:layout_constraintTop_toBottomOf="@+id/titlePage" />
 
@@ -62,6 +63,7 @@
         layout="@layout/product_characteristics_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

@@ -6,7 +6,6 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.effectivemobile.domain.useCases.GetProductDetailsUseCase
-import com.effectivemobiletest.App.Companion.outLogs
 import com.effectivemobiletest.events.Event
 import com.effectivemobiletest.extensions.asLiveData
 import com.effectivemobiletest.extensions.post
@@ -24,6 +23,9 @@ class DetailProductViewModel
     private val _photosData = MutableLiveData<Event<ArrayList<String>>>()
     val photosData = _photosData.asLiveData()
 
+    private val _productDetailsData = MutableLiveData<Event<DetailsPageData>>()
+    val productDetailsData = _productDetailsData.asLiveData()
+
     override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
         if(event == Lifecycle.Event.ON_CREATE){
             viewModelScope.launch {
@@ -35,8 +37,7 @@ class DetailProductViewModel
     private suspend fun getProductDetails() {
         productDetailsUseCase.getProductDetails().collect{
             it.data?.let { productDetails->
-                _photosData.post(Event(productDetails.images))
-                outLogs(productDetails.toString())
+                _productDetailsData.post(Event(productDetails.mapToDetailsData()))
             }
             it.error?.let {
 

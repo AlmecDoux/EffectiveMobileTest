@@ -8,15 +8,17 @@ import com.airbnb.epoxy.EpoxyModel
 import com.airbnb.epoxy.TypedEpoxyController
 import com.airbnb.epoxy.carousel
 import com.effectivemobile.test.R
+import com.effectivemobiletest.App.Companion.outLogs
 import com.effectivemobiletest.decorations.marginDecorations.CenterZoomLinearLayoutManager
 import com.effectivemobiletest.epoxy.contollers.customEpoxyViews.*
 import com.effectivemobiletest.epoxy.models.*
 import com.effectivemobiletest.epoxy.models.mapperClasses.*
 
-class MainPageEpoxyController(): TypedEpoxyController<List<EpoxyData>>() {
+class MainPageEpoxyController : TypedEpoxyController<List<EpoxyData>>() {
 
 
     override fun buildModels(data: List<EpoxyData>) {
+        outLogs("Build model")
         data.forEach { cellData ->
             when(cellData) {
                 is EpoxyHotSalesItem -> addHotSalesItems(cellData)

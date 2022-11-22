@@ -13,23 +13,25 @@
         android:id="@+id/titleProductField"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Galaxy Note 20 Ultra"
+        android:text=""
         android:textSize="@dimen/title_page_size"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
-        app:layout_constraintEnd_toStartOf="@+id/btnBack"
+        android:maxLines="1"
+        android:ellipsize="end"
+        app:layout_constraintBottom_toBottomOf="@+id/isFavorite"
+        app:layout_constraintEnd_toStartOf="@+id/isFavorite"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnBack" />
+        app:layout_constraintTop_toTopOf="@+id/isFavorite" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/btnBack"
+        android:id="@+id/isFavorite"
         android:layout_width="37dp"
         android:layout_height="37dp"
         android:background="@drawable/dark_rounded_button"
         android:scaleType="centerInside"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/white_heart" />
+        app:srcCompat="@drawable/is_favorite_image_state" />
 
     <RatingBar
         android:id="@+id/rating"
@@ -112,7 +114,7 @@
         android:id="@+id/cpuField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exynos 990"
+        android:text=""
         android:layout_marginTop="@dimen/small_margin"
         android:textSize="@dimen/small_page_size"
         android:textColor="@color/grey"
@@ -133,7 +135,7 @@
         android:id="@+id/cameraField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exynos 990"
+        android:text=""
         android:layout_marginTop="@dimen/small_margin"
         android:textColor="@color/grey"
         android:textSize="@dimen/small_page_size"
@@ -154,7 +156,7 @@
         android:id="@+id/ramField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exynos 990"
+        android:text=""
         android:layout_marginTop="@dimen/small_margin"
         android:textColor="@color/grey"
         android:textSize="@dimen/small_page_size"
@@ -176,7 +178,7 @@
         android:id="@+id/sdField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exynos 990"
+        android:text=""
         android:layout_marginTop="@dimen/small_margin"
         android:textColor="@color/grey"
         android:textSize="@dimen/small_page_size"
@@ -233,7 +235,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="$1,500.00"
+            android:text=""
             android:textColor="@color/white"
             android:textSize="@dimen/primary_text_page_size"
             android:textStyle="bold" />

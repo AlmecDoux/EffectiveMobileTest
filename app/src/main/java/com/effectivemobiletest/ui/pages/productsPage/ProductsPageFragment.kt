@@ -9,6 +9,7 @@ import by.kirich1409.viewbindingdelegate.viewBinding
 import com.effectivemobile.domain.annotations.IoDispatcher
 import com.effectivemobile.domain.annotations.MainDispatcher
 import com.effectivemobile.test.databinding.ProductsPageLayoutBinding
+import com.effectivemobiletest.App
 import com.effectivemobiletest.epoxy.contollers.MainPageEpoxyController
 import com.effectivemobiletest.ui.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -32,11 +33,8 @@ class ProductsPageFragment: BaseFragment<ProductsPageLayoutBinding, ProductsView
     override fun setUpViewsBinding() {
         val layoutManager = GridLayoutManager(requireContext(), 2)
         layoutManager.spanSizeLookup = controller.spanSizeLookup
-        binding.epoxyRecyclerView.apply {
-            set3DItem(false)
-            setAlpha(true)
-            setInfinite(true)
-        }
+        controller.adapter
+        binding.epoxyRecyclerView.setController(controller)
         binding.navigationBar.setupWithNavController(findNavController())
     }
     override fun observeData() {
