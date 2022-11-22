@@ -2,6 +2,7 @@ package com.effectivemobiletest.epoxy.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.widget.LinearLayoutCompat.LayoutParams
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.effectivemobile.test.databinding.ProductDetailPhotoLayoutBinding
@@ -16,6 +17,11 @@ class PhotosAdapter():Adapter<PhotosAdapter.PhotosViewHolder>(){
     ):ViewHolder(binding.root){
 
         fun bind(photoUrl:String){
+            val widthScreen = itemView.context.applicationContext.resources.displayMetrics.widthPixels
+            val photoWidth = (widthScreen/2).toInt()
+            val photoHeight = (photoWidth * 1.5).toInt()
+            val layoutParams = LayoutParams(photoWidth, photoHeight)
+            binding.root.layoutParams = layoutParams
             Picasso.get().load(photoUrl).into(binding.imgProductPhoto)
         }
     }

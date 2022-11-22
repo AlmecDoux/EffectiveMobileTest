@@ -51,7 +51,6 @@ class ProductCharacteristicsController:TypedEpoxyController<List<EpoxyData>>() {
             id("carouselColors")
             models(items)
             hasFixedSize(true)
-            //padding(Carousel.Padding(0,30,0,30,25))
             //onBind {_, carousel, _ -> carousel.overScrollMode = View.OVER_SCROLL_NEVER}
         }
     }

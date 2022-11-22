@@ -1,24 +1,15 @@
 package com.effectivemobiletest.ui.pages.detailsProductPage
 
 import android.view.View
-import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearSnapHelper
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.effectivemobile.domain.annotations.MainDispatcher
-import com.effectivemobile.domain.models.ProductDetails
 import com.effectivemobile.test.databinding.DetailProductLayoutBinding
 import com.effectivemobiletest.decorations.marginDecorations.CenterZoomLinearLayoutManager
-import com.effectivemobiletest.decorations.marginDecorations.HorizontalMarginItemDecoration
 import com.effectivemobiletest.epoxy.adapters.PhotosAdapter
 import com.effectivemobiletest.epoxy.contollers.ProductCharacteristicsController
-import com.effectivemobiletest.epoxy.contollers.ProductPhotosController
-import com.effectivemobiletest.epoxy.models.mapperClasses.Capacity
-import com.effectivemobiletest.epoxy.models.mapperClasses.ColorsOfPoint
-import com.effectivemobiletest.epoxy.models.mapperClasses.EpoxyProductCapacityItem
-import com.effectivemobiletest.epoxy.models.mapperClasses.EpoxyProductColorsItem
 import com.effectivemobiletest.ui.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineDispatcher
@@ -50,7 +41,7 @@ class DetailsProductFragment : BaseFragment<DetailProductLayoutBinding, DetailPr
             set3DItem(false)
             setAlpha(false)
             setInfinite(true)
-            setIntervalRatio(0.8f)
+            setIntervalRatio(0.95f)
         }
     }
 

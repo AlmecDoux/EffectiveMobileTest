@@ -15,15 +15,15 @@ class CapacityModel(
     override fun CapacityItemLayoutBinding.bind() {
         val selected = capacity.isSelected
         if(selected){
-            root.background = ContextCompat.getDrawable(root.context, R.drawable.primary_rounded_button)
-            capacityField.setTextColor(ContextCompat.getColor(root.context, R.color.white))
+            card.background = ContextCompat.getDrawable(card.context, R.drawable.primary_rounded_button)
+            capacityField.setTextColor(ContextCompat.getColor(card.context, R.color.white))
         }
         else{
-            root.background = null
-            capacityField.setTextColor(ContextCompat.getColor(root.context, R.color.grey))
+            card.background = null
+            capacityField.setTextColor(ContextCompat.getColor(card.context, R.color.grey))
         }
         capacityField.text = capacity.capacityValue
-        root.setOnClickListener {
+        card.setOnClickListener {
             listenerOfSelect.invoke(capacity.isSelected)
         }
     }

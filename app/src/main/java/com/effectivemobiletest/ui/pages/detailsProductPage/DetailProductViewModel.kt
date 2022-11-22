@@ -20,9 +20,6 @@ class DetailProductViewModel
     private val productDetailsUseCase: GetProductDetailsUseCase
 ):BaseViewModel(), LifecycleEventObserver {
 
-    private val _photosData = MutableLiveData<Event<ArrayList<String>>>()
-    val photosData = _photosData.asLiveData()
-
     private val _productDetailsData = MutableLiveData<Event<DetailsPageData>>()
     val productDetailsData = _productDetailsData.asLiveData()
 
