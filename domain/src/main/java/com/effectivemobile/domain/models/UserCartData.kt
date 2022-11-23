@@ -11,7 +11,7 @@ data class UserCartData(
     val basket:ArrayList<BasketData> = arrayListOf(),
 
     @SerializedName("delivery")
-    val delivery:Boolean = false,
+    val delivery:String = "",
 
     @SerializedName("total")
     val totalPrice:Int = 0,

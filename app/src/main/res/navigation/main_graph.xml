@@ -21,7 +21,7 @@
         android:id="@+id/cartPageFragment"
         android:name="com.effectivemobiletest.ui.pages.cartPage.CartPageFragment"
         android:label="CartPageFragment"
-        tools:layout="@layout/card_page_layout"/>
+        tools:layout="@layout/cart_page_layout"/>
     <fragment
         android:id="@+id/detailsProductFragment"
         android:name="com.effectivemobiletest.ui.pages.detailsProductPage.DetailsProductFragment"

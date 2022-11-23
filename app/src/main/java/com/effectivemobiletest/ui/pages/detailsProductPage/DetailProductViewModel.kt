@@ -18,16 +18,14 @@ import javax.inject.Inject
 class DetailProductViewModel
 @Inject constructor(
     private val productDetailsUseCase: GetProductDetailsUseCase
-):BaseViewModel(), LifecycleEventObserver {
+):BaseViewModel() {
 
     private val _productDetailsData = MutableLiveData<Event<DetailsPageData>>()
     val productDetailsData = _productDetailsData.asLiveData()
 
-    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-        if(event == Lifecycle.Event.ON_CREATE){
-            viewModelScope.launch {
-                getProductDetails()
-            }
+    fun getProductData() {
+        viewModelScope.launch {
+            getProductDetails()
         }
     }
 

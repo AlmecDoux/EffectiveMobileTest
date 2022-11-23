@@ -11,6 +11,7 @@ import androidx.navigation.NavController
 import androidx.navigation.ui.onNavDestinationSelected
 import com.effectivemobile.test.R
 import com.effectivemobile.test.databinding.BottomNavigationLayoutBinding
+import com.effectivemobiletest.App.Companion.outLogs
 
 class NavigationBottomBar(context: Context, private val attributeSet: AttributeSet):
     LinearLayoutCompat(context, attributeSet) {
@@ -47,6 +48,15 @@ class NavigationBottomBar(context: Context, private val attributeSet: AttributeS
         }
     }
 
+    fun setBadge(value:Int){
+        for (bottomItem in binding.navigationLayout.iterator()){
+            if (bottomItem is BottomNavigationItem) {
+                if(bottomItem.getMenuDestination() == R.id.cartPageFragment){
+                    bottomItem.setBadge(value)
+                }
+            }
+        }
+    }
     private fun generateLayouts(menu: Menu){
         val countItem = menu.size()
         binding.navigationLayout.weightSum = countItem.toFloat()

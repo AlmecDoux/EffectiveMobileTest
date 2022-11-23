@@ -7,7 +7,7 @@ data class BestSalesItem(
     val id:Int = 0,
 
     @SerializedName("is_favorites")
-    val isFavorites:Boolean = false,
+    var isFavorites:Boolean = false,
 
     @SerializedName("title")
     val title:String = "",

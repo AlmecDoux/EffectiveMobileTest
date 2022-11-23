@@ -3,34 +3,48 @@ package com.effectivemobiletest.ui.views.bottomNavigationLayout
 import android.content.Context
 import android.util.AttributeSet
 import android.view.Gravity
+import android.view.LayoutInflater
 import android.view.MenuItem
+import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.effectivemobile.test.R
+import com.effectivemobile.test.databinding.BottomNavigationItemLayoutBinding
+import com.effectivemobile.test.databinding.BottomNavigationLayoutBinding
 
 class BottomNavigationItem @JvmOverloads constructor(
     context: Context,
     attributeSet: AttributeSet? = null,
     defStyle: Int = 0
-) : AppCompatImageView(context, attributeSet, defStyle){
+): LinearLayoutCompat(context, attributeSet, defStyle){
     var navigationItem: MenuItem? = null
-    private val factor = context.resources.displayMetrics.density
+    private var binding: BottomNavigationItemLayoutBinding
     init {
-
-        val size = (25 * factor).toInt()
-        val layoutParams = LinearLayoutCompat.LayoutParams(size, size)
+        binding = BottomNavigationItemLayoutBinding.inflate(LayoutInflater.from(context), this, false)
+        addView(binding.root)
+        val layoutParams = binding.root.layoutParams as LinearLayout.LayoutParams
         layoutParams.gravity = Gravity.CENTER
         layoutParams.weight = 1f
         setLayoutParams(layoutParams)
-        //scaleType = ScaleType.CENTER_CROP
     }
 
     fun setNavigationMenuItem(navigationItem: MenuItem){
         this.navigationItem = navigationItem
         navigationItem.icon?.let {
-            setImageDrawable(it)
-            scaleType = ScaleType.CENTER_INSIDE
+            binding.bottomItemImg.setImageDrawable(it)
+            binding.bottomItemImg.scaleType = ImageView.ScaleType.CENTER_INSIDE
+        }
+    }
+    fun setBadge(value:Int){
+        if(value <= 0){
+            binding.badgeLabel.visibility = GONE
+        }
+        else{
+            binding.badgeLabel.text = value.toString()
+            binding.badgeLabel.visibility = VISIBLE
         }
     }
     fun getMenuDestination():Int{
@@ -39,10 +53,10 @@ class BottomNavigationItem @JvmOverloads constructor(
 
     override fun setSelected(selected: Boolean) {
         if(selected){
-            setColorFilter(ContextCompat.getColor(context, R.color.primaryColor))
+            binding.bottomItemImg.setColorFilter(ContextCompat.getColor(context, R.color.primaryColor))
         }
         else{
-            setColorFilter(ContextCompat.getColor(context, R.color.white))
+            binding.bottomItemImg.setColorFilter(ContextCompat.getColor(context, R.color.white))
         }
         super.setSelected(selected)
     }

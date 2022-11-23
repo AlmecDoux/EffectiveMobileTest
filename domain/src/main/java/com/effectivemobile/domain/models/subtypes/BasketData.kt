@@ -13,5 +13,5 @@ data class BasketData(
     val price:Int = 0,
 
     @SerializedName("title")
-    val title:Int = 0,
+    val title:String = "",
 )

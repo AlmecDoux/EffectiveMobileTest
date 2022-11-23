@@ -6,8 +6,10 @@ import com.effectivemobile.domain.useCases.GetMainPageDataUseCase
 import com.effectivemobile.test.R
 import com.effectivemobiletest.App
 import com.effectivemobiletest.App.Companion.outLogs
-import com.effectivemobiletest.epoxy.models.mapperClasses.*
+import com.effectivemobiletest.adapters.DisplayableItem
+import com.effectivemobiletest.adapters.adaptersData.*
 import com.effectivemobiletest.events.Event
+import com.effectivemobiletest.events.LoadingActions
 import com.effectivemobiletest.extensions.asLiveData
 import com.effectivemobiletest.extensions.getString
 import com.effectivemobiletest.extensions.navigate
@@ -21,66 +23,83 @@ import javax.inject.Inject
 class ProductsViewModel
 @Inject constructor(
     private val getMainPageDataUseCase: GetMainPageDataUseCase
-):BaseViewModel(), LifecycleEventObserver {
-    private val _mainPageData = MutableLiveData<Event<ArrayList<EpoxyData>>>()
+):BaseViewModel() {
+
+    private val _mainPageData = MutableLiveData<Event<List<DisplayableItem>>>()
     val mainPageData = _mainPageData.asLiveData()
 
+    private val _countOfProductsInCart = MutableLiveData<Event<Int>>()
+    val countOfProductsInCart = _countOfProductsInCart.asLiveData()
+
+    fun updatePage(){
+        outLogs("UpdatePage")
+        _loading.post(Event(LoadingActions.ShowLoading))
+        viewModelScope.launch {
+            getHotSalesItems()
+            getCountOfProductsInCart()
+        }
+    }
+
+    private suspend fun getCountOfProductsInCart() {
+        getMainPageDataUseCase.getCountProductInUserCart().collect{
+            _countOfProductsInCart.post(Event(it))
+        }
+    }
 
     private suspend fun getHotSalesItems(){
         getMainPageDataUseCase.getMainPageData().collect{
-            it.data?.let { mainPageData->
-                val productPageContent = arrayListOf<EpoxyData>()
-                productPageContent.add(EpoxyLocationItem(
-                    listLocations = listOf("Zihuatanejo, Gro"),
-                    clickOnFilter = { outLogs("clickFilter") },
-                    chooseLocation = {}
-                ))
-                productPageContent.add(EpoxyHeaderTitleItem(
-                    headerTitle = getString(R.string.select_category),
-                    linkText = getString(R.string.view_all),
-                    clickLink = {
-                        outLogs("CLICK LINK")
-                    }
-                ))
-                productPageContent.add(categoryDataBuilder.mapToEpoxy {
-                    outLogs("click category: $it")
-                })
-                productPageContent.add(EpoxySearchItem(
-                    search = { outLogs(it) },
-                    qrBtnClick = {
-                        outLogs("qrClick")
-                    }
-                ))
-                productPageContent.add(EpoxyHeaderTitleItem(
-                    headerTitle = getString(R.string.hot_sales),
-                    linkText = getString(R.string.see_more),
-                    clickLink = {
-                        outLogs("CLICK LINK")
-                    }
-                ))
-                productPageContent.add(mainPageData.hotSalesItems.mapToEpoxy())
-                productPageContent.add(EpoxyHeaderTitleItem(
-                    headerTitle = getString(R.string.best_seller),
-                    linkText = getString(R.string.see_more),
-                    clickLink = {
-                        outLogs("CLICK LINK")
-                    }
-                ))
-                productPageContent.add(mainPageData.bestSellerItems.mapToEpoxy(
-                    clickOn = {
-                        _navigateEvent.navigate(ProductsPageFragmentDirections.actionProductsPageFragmentToDetailsProductFragment())
-                    },
-                    clickFavorite = { id, isFav->
-                        outLogs("clickOnFav:$id $isFav")
-                    }
-                ))
-                _mainPageData.post(Event(productPageContent))
+            it.data?.let { mainPageData ->
+                val mainPage = listOf(
+                    LocationAdapterItem(
+                        defaultLocation = "City",
+                        clickOnFilter = {},
+                        chooseLocation = {}
+                    ),
+                    HeaderTitleAdapterItem(
+                        linkText = getString(R.string.view_all),
+                        headerTitle = getString(R.string.select_category),
+                        clickLink = {}
+                    ),
+                    CategoryAdapterItems(
+                        categoryItems = categoryDataBuilder
+                    ),
+                    SearchAdapterItem(
+                        search = {
+                            outLogs(it)
+                        },
+                        qrBtnClick = {}
+                    ),
+                    HeaderTitleAdapterItem(
+                        linkText = getString(R.string.see_more),
+                        headerTitle = getString(R.string.hot_sales),
+                        clickLink = {}
+                    ),
+                    HotSalesAdapterItem(
+                        hotSalesItems = mainPageData.hotSalesItems
+                    ),
+                    HeaderTitleAdapterItem(
+                        linkText = getString(R.string.see_more),
+                        headerTitle = getString(R.string.best_seller),
+                        clickLink = {}
+                    ),
+                    BestSalesAdapterItem(
+                        items = mainPageData.bestSellerItems,
+                        clickOn = {
+                            _navigateEvent.navigate(ProductsPageFragmentDirections.actionProductsPageFragmentToDetailsProductFragment())
+                        }
+                    )
+                )
+                _mainPageData.post(Event(mainPage))
+                _loading.post(Event(LoadingActions.HideLoading))
             }
             it.error?.let {
+                _loading.post(Event(LoadingActions.HideLoading))
                 App.outLogs("error $it")
             }
         }
     }
+
+
 
     private val categoryDataBuilder = arrayListOf(
         CategoryItem(id = 1, img = R.drawable.phone_icon, title = "Phone"),
@@ -94,11 +113,4 @@ class ProductsViewModel
 
     )
 
-    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
-        if(event == Lifecycle.Event.ON_CREATE){
-            viewModelScope.launch {
-                getHotSalesItems()
-            }
-        }
-    }
 }

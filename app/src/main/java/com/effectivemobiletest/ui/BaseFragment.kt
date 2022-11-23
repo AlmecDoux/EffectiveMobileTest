@@ -21,12 +21,12 @@ abstract class BaseFragment<VBinding : ViewBinding, ViewModel:BaseViewModel>: Fr
         super.onViewCreated(view, savedInstanceState)
         setNavigationObserver()
         setUpViewsBinding()
-        observeData()
+        viewModel.observeData()
     }
 
     open fun setUpViewsBinding(){}
 
-    open fun observeData(){}
+    open fun ViewModel.observeData(){}
 
 
     private fun setNavigationObserver() = this.viewModel.navigateEvent.observe(viewLifecycleOwner){ errorEvent->

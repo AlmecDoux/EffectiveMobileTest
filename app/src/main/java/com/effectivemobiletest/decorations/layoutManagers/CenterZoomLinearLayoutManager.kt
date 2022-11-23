@@ -1,4 +1,4 @@
-package com.effectivemobiletest.decorations.marginDecorations
+package com.effectivemobiletest.decorations.layoutManagers
 
 import android.content.Context
 import android.view.View
