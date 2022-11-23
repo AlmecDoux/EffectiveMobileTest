@@ -5,6 +5,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -37,6 +38,12 @@ class DetailsProductFragment : BaseFragment<DetailProductLayoutBinding, DetailPr
     override fun setUpViewsBinding() {
         binding.include.isFavorite.setOnClickListener{
             binding.include.isFavorite.isSelected = !it.isSelected
+        }
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.marketBtn.setOnClickListener {
+            findNavController().navigate(DetailsProductFragmentDirections.actionDetailsProductFragmentToCartPageFragment())
         }
         binding.photosProductCarousel.adapter = photosAdapter
         binding.photosProductCarousel.layoutManager = CenterZoomLinearLayoutManager(requireContext())

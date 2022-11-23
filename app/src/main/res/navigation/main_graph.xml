@@ -26,5 +26,9 @@
         android:id="@+id/detailsProductFragment"
         android:name="com.effectivemobiletest.ui.pages.detailsProductPage.DetailsProductFragment"
         android:label="DetailsProductFragment"
-        tools:layout="@layout/detail_product_layout"/>
+        tools:layout="@layout/detail_product_layout">
+        <action
+            android:id="@+id/action_detailsProductFragment_to_cartPageFragment"
+            app:destination="@id/cartPageFragment" />
+    </fragment>
 </navigation>
