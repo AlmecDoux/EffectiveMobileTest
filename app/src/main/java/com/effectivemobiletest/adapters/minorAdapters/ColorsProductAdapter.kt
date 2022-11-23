@@ -1,4 +1,4 @@
-package com.effectivemobiletest.adapters
+package com.effectivemobiletest.adapters.minorAdapters
 
 import android.content.res.ColorStateList
 import android.graphics.Color

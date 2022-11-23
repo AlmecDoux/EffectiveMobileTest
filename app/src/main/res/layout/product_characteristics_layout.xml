@@ -45,58 +45,34 @@
         app:layout_constraintStart_toStartOf="@+id/titleProductField"
         app:layout_constraintTop_toBottomOf="@+id/titleProductField" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tabsShop"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/small_margin"
-        android:text="@string/shop"
-        android:textAlignment="center"
-        android:textSize="@dimen/medium_text_page_size"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/tabsDetails"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rating" />
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="0dp"
-        android:layout_height="3dp"
-        android:layout_marginHorizontal="@dimen/small_margin"
-        android:layout_marginTop="@dimen/small_margin"
-        android:background="@drawable/primary_rounded_button"
-        app:layout_constraintEnd_toEndOf="@+id/tabsShop"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tabsShop" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tabsDetails"
-        android:layout_width="0dp"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabsRecycler"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/details"
-        android:textAlignment="center"
-        android:textColor="@color/grey"
-        android:textSize="@dimen/medium_text_page_size"
-        app:layout_constraintEnd_toStartOf="@+id/tabsFeatures"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tabsShop"
-        app:layout_constraintTop_toTopOf="@id/tabsShop" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tabsFeatures"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/features"
-        android:textAlignment="center"
-        android:textColor="@color/grey"
-        android:textSize="@dimen/medium_text_page_size"
+        app:tabIndicatorColor="@color/primaryColor"
+        app:tabIndicatorHeight="2dp"
+        app:tabMode="fixed"
+        app:tabTextColor="@color/grey"
+        android:theme="@style/Theme.EffectiveMobileTest"
+        app:tabSelectedTextColor="@color/blackColor"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tabsDetails"
-        app:layout_constraintTop_toTopOf="@id/tabsDetails" />
-
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rating">
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/shop"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/details"/>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/features"/>
+    </com.google.android.material.tabs.TabLayout>
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/cpuIcon"
         android:layout_width="28dp"
@@ -107,7 +83,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view"
+        app:layout_constraintTop_toBottomOf="@+id/tabsRecycler"
         app:srcCompat="@drawable/cpu_icon" />
 
     <androidx.appcompat.widget.AppCompatTextView

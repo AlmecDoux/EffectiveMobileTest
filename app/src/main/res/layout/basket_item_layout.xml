@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_margin="@dimen/medium_margin"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imgCartProduct"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
+            app:srcCompat="@drawable/samsung" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/deleteProductFromCart"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginEnd="@dimen/medium_margin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/delete_icon" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/plusBtn"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:layout_marginTop="@dimen/small_margin"
+        android:scaleType="centerInside"
+        app:layout_constraintEnd_toEndOf="@+id/cartProductCounter"
+        app:layout_constraintStart_toStartOf="@+id/cartProductCounter"
+        app:layout_constraintTop_toBottomOf="@+id/cartProductCounter"
+        app:srcCompat="@drawable/plus_icon" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/minusBtn"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:scaleType="centerInside"
+        android:layout_marginBottom="@dimen/small_margin"
+        app:layout_constraintBottom_toTopOf="@+id/cartProductCounter"
+        app:layout_constraintEnd_toEndOf="@+id/cartProductCounter"
+        app:layout_constraintStart_toStartOf="@+id/cartProductCounter"
+        app:srcCompat="@drawable/minus_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cartProductCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="1"
+        android:textStyle="bold"
+        android:layout_marginEnd="@dimen/big_margin"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/deleteProductFromCart"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cartProductTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="@dimen/medium_text_page_size"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:text="Galaxy Note 20 \nUltra"
+        android:layout_marginStart="@dimen/medium_margin"
+        android:layout_marginEnd="@dimen/grand_margin"
+        app:layout_constraintEnd_toStartOf="@+id/layer"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toTopOf="@+id/cardView"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/cartProductAmount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/grand_margin"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="$3000.00"
+        android:textColor="@color/primaryColor"
+        android:textSize="@dimen/medium_text_page_size"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
+        app:layout_constraintEnd_toStartOf="@+id/layer"
+        app:layout_constraintStart_toStartOf="@+id/cartProductTitle"
+        app:layout_constraintTop_toBottomOf="@+id/cartProductTitle" />
+
+    <androidx.constraintlayout.helper.widget.Layer
+        android:id="@+id/layer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/alpha_dark_rounded_panel"
+        android:padding="@dimen/small_margin"
+        android:translationZ="-1dp"
+        app:constraint_referenced_ids="cartProductCounter, plusBtn, minusBtn"
+        app:layout_constraintBottom_toBottomOf="@id/plusBtn"
+        app:layout_constraintEnd_toEndOf="@+id/cartProductCounter"
+        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintStart_toStartOf="@id/cartProductCounter"
+        app:layout_constraintTop_toTopOf="@+id/minusBtn"
+        app:layout_constraintVertical_bias="0.4" />
+</androidx.constraintlayout.widget.ConstraintLayout>

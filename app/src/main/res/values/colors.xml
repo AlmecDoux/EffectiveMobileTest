@@ -14,4 +14,5 @@
     <color name="grey">#CCCCCC</color>
     <color name="gold">#FFB800</color>
     <color name="transparent_white">#40FFFFFF</color>
+    <color name="alpha_black">#282843</color>
 </resources>

@@ -1,17 +1,21 @@
 package com.effectivemobiletest.ui.pages.detailsProductPage
 
+import android.graphics.Typeface
 import android.view.View
+import android.widget.TextView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.effectivemobile.domain.annotations.MainDispatcher
+import com.effectivemobile.test.R
 import com.effectivemobile.test.databinding.DetailProductLayoutBinding
 import com.effectivemobiletest.decorations.layoutManagers.CenterZoomLinearLayoutManager
-import com.effectivemobiletest.adapters.PhotosAdapter
+import com.effectivemobiletest.adapters.minorAdapters.PhotosAdapter
 import com.effectivemobiletest.adapters.ProductFeatureAdapter
-import com.effectivemobiletest.adapters.ProductPageAdapter
 import com.effectivemobiletest.ui.BaseFragment
+import com.google.android.material.tabs.TabLayout
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -42,6 +46,7 @@ class DetailsProductFragment : BaseFragment<DetailProductLayoutBinding, DetailPr
             setInfinite(true)
             setIntervalRatio(0.95f)
         }
+
     }
 
     override fun DetailProductViewModel.observeData() {
@@ -54,10 +59,12 @@ class DetailsProductFragment : BaseFragment<DetailProductLayoutBinding, DetailPr
         }
         viewModel.getProductData()
     }
+
     private suspend fun setPageData(productDetailsData:DetailsPageData):Unit = withContext(mainDispatcher){
         binding.include.colorAndCapacityRecycler.adapter = ProductFeatureAdapter().apply {
             items = productDetailsData.colorAndCapacityData
         }
+
         photosAdapter.setData(productDetailsData.photos)
         binding.include.rating.rating = productDetailsData.rating
         binding.include.ramField.text = productDetailsData.ssd
@@ -70,4 +77,5 @@ class DetailsProductFragment : BaseFragment<DetailProductLayoutBinding, DetailPr
         binding.photosProductCarousel.visibility = View.VISIBLE
         binding.include.root.visibility = View.VISIBLE
     }
+
 }

@@ -1,4 +1,4 @@
-package com.effectivemobiletest.adapters
+package com.effectivemobiletest.adapters.minorAdapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -68,17 +68,23 @@
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/grand_margin"
         android:layout_marginBottom="@dimen/medium_margin"
+        android:orientation="vertical"
+        android:overScrollMode="never"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/view3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
 
-    <View
+    <androidx.constraintlayout.helper.widget.Layer
         android:id="@+id/backGroundLayer"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:translationZ="-1dp"
         android:layout_marginTop="@dimen/grand_margin"
+        android:paddingBottom="@dimen/medium_margin"
+        app:constraint_referenced_ids="view2, view3, productInCardRecycler,deliveryLabel,deliveryField,appCompatButton"
         android:background="@drawable/dark_rounded_panel"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -161,7 +167,6 @@
         android:layout_width="0dp"
         android:layout_height="54dp"
         android:layout_margin="@dimen/medium_margin"
-        android:layout_marginBottom="440dp"
         android:background="@drawable/primary_rounded_button"
         android:text="@string/checkout"
         android:textColor="@color/white"

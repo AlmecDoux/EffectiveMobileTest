@@ -1,6 +1,5 @@
 package com.effectivemobiletest.adapters
 
-import android.graphics.Color
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.Gravity
@@ -13,13 +12,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.effectivemobile.test.databinding.CarouselLayoutBinding
-import com.effectivemobile.test.databinding.ColorProductLayoutBinding
 import com.effectivemobile.test.databinding.HeaderTitleLayoutBinding
 import com.effectivemobile.test.databinding.LocationItemLayoutBinding
 import com.effectivemobile.test.databinding.SearchProductLayoutBinding
 import com.effectivemobiletest.adapters.adaptersData.*
+import com.effectivemobiletest.adapters.minorAdapters.*
 import com.effectivemobiletest.decorations.layoutManagers.CenterZoomLinearLayoutManager
 import com.effectivemobiletest.decorations.marginDecorations.MarginItemDecoration
+import com.effectivemobiletest.ui.pages.cartPage.BasketData
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
 
 interface DisplayableItem
@@ -50,9 +50,9 @@ fun categoriesAdapterDelegate() = adapterDelegateViewBinding<CategoryAdapterItem
     { layoutInflater, root -> CarouselLayoutBinding.inflate(layoutInflater, root, false) }
 ){
     bind {
-        binding.photosCarousel.adapter = CategoriesAdapter(item.categoryItems)
-        binding.photosCarousel.layoutManager = LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
-        binding.photosCarousel.overScrollMode = OVER_SCROLL_NEVER
+        binding.carousel.adapter = CategoriesAdapter(item.categoryItems)
+        binding.carousel.layoutManager = LinearLayoutManager(itemView.context, RecyclerView.HORIZONTAL, false)
+        binding.carousel.overScrollMode = OVER_SCROLL_NEVER
     }
 }
 
@@ -61,11 +61,11 @@ fun carouselHotSaleAdapterDelegate() = adapterDelegateViewBinding<HotSalesAdapte
 ){
     bind {
         val snapHelper = LinearSnapHelper()
-        binding.photosCarousel.adapter = HotSalesAdapter(hotSalesItems = item.hotSalesItems)
-        binding.photosCarousel.layoutManager = CenterZoomLinearLayoutManager(itemView.context)
-        binding.photosCarousel.overScrollMode = OVER_SCROLL_NEVER
-        snapHelper.attachToRecyclerView(binding.photosCarousel)
-        binding.photosCarousel.layoutManager?.scrollToPosition(Integer.MAX_VALUE / 2)
+        binding.carousel.adapter = HotSalesAdapter(hotSalesItems = item.hotSalesItems)
+        binding.carousel.layoutManager = CenterZoomLinearLayoutManager(itemView.context)
+        binding.carousel.overScrollMode = OVER_SCROLL_NEVER
+        snapHelper.attachToRecyclerView(binding.carousel)
+        binding.carousel.layoutManager?.scrollToPosition(Integer.MAX_VALUE / 2)
     }
 }
 
@@ -94,10 +94,10 @@ fun bestSalesAdapterDelegate() = adapterDelegateViewBinding<BestSalesAdapterItem
 { layoutInflater, root -> CarouselLayoutBinding.inflate(layoutInflater, root, false) }
 ){
     bind {
-        binding.photosCarousel.adapter = BestSalesAdapter(item)
-        binding.photosCarousel.layoutManager = GridLayoutManager(itemView.context, 2, GridLayoutManager.VERTICAL, false)
-        binding.photosCarousel.overScrollMode = OVER_SCROLL_NEVER
-        binding.photosCarousel.addItemDecoration(MarginItemDecoration(25))
+        binding.carousel.adapter = BestSalesAdapter(item)
+        binding.carousel.layoutManager = GridLayoutManager(itemView.context, 2, GridLayoutManager.VERTICAL, false)
+        binding.carousel.overScrollMode = OVER_SCROLL_NEVER
+        binding.carousel.addItemDecoration(MarginItemDecoration(25))
     }
 }
 
@@ -107,11 +107,11 @@ fun productColorsAdapterDelegate() = adapterDelegateViewBinding<ProductColorsAda
     bind {
         val layoutParams = LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
         layoutParams.gravity = Gravity.CENTER
-        binding.photosCarousel.layoutParams = layoutParams
-        binding.photosCarousel.adapter = ColorsProductAdapter(item.listOfColors)
-        binding.photosCarousel.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
-        binding.photosCarousel.overScrollMode = OVER_SCROLL_NEVER
-        binding.photosCarousel.addItemDecoration(MarginItemDecoration(25))
+        binding.carousel.layoutParams = layoutParams
+        binding.carousel.adapter = ColorsProductAdapter(item.listOfColors)
+        binding.carousel.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.carousel.overScrollMode = OVER_SCROLL_NEVER
+        binding.carousel.addItemDecoration(MarginItemDecoration(25))
     }
 }
 
@@ -122,10 +122,12 @@ fun productCapacityAdapterDelegate() = adapterDelegateViewBinding<ProductCapacit
         val layoutParams = LayoutParams(WRAP_CONTENT, MATCH_PARENT)
         layoutParams.gravity = Gravity.CENTER
         layoutParams.marginStart = 10
-        binding.photosCarousel.layoutParams = layoutParams
-        binding.photosCarousel.adapter = CapacityProductAdapter(item.listOfCapacities)
-        binding.photosCarousel.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
-        binding.photosCarousel.overScrollMode = OVER_SCROLL_NEVER
-        binding.photosCarousel.addItemDecoration(MarginItemDecoration(25))
+        binding.carousel.layoutParams = layoutParams
+        binding.carousel.adapter = CapacityProductAdapter(item.listOfCapacities)
+        binding.carousel.layoutManager = LinearLayoutManager(itemView.context, LinearLayoutManager.HORIZONTAL, false)
+        binding.carousel.overScrollMode = OVER_SCROLL_NEVER
+        binding.carousel.addItemDecoration(MarginItemDecoration(25))
     }
 }
+
+
