@@ -1,0 +1,38 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/grey_rounded_background"
+    android:paddingHorizontal="@dimen/medium_margin"
+    android:paddingVertical="@dimen/small_margin">
+
+    <TextView
+        android:id="@+id/textSpinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blackColor"
+        android:gravity="center_vertical"
+        android:textAlignment="gravity"
+        android:textSize="@dimen/medium_text_page_size"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/arrowSpinner"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:singleLine="true"
+        tools:text="Filter name" />
+
+    <ImageView
+        android:id="@+id/arrowSpinner"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrow_down"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -10,9 +10,12 @@ import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.effectivemobile.domain.annotations.MainDispatcher
 import com.effectivemobile.test.databinding.ProductsPageLayoutBinding
+import com.effectivemobiletest.App.Companion.outLogs
 import com.effectivemobiletest.adapters.ProductPageAdapter
 import com.effectivemobiletest.events.LoadingActions
 import com.effectivemobiletest.ui.BaseFragment
+import com.effectivemobiletest.ui.views.BottomSheetFragment
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -27,7 +30,7 @@ class ProductsPageFragment: BaseFragment<ProductsPageLayoutBinding, ProductsView
 
     override val viewModel: ProductsViewModel by viewModels()
     override val binding: ProductsPageLayoutBinding by viewBinding(CreateMethod.INFLATE)
-
+    private var dialogBottomSheep:BottomSheetFragment? = null
     override fun setUpViewsBinding() {
         binding.swipeLayout.setOnRefreshListener {
             viewModel.updatePage()
@@ -58,6 +61,25 @@ class ProductsPageFragment: BaseFragment<ProductsPageLayoutBinding, ProductsView
         countOfProductsInCart.observe(viewLifecycleOwner){
             it.getContentIfNotHandled()?.let { badgeValue->
                 binding.navigationBar.setBadge(badgeValue)
+            }
+        }
+        openFilterPanel.observe(viewLifecycleOwner){
+            it.peekContent().let { filterOpen->
+                outLogs("filterOpen: $filterOpen")
+                if(filterOpen){
+                    dialogBottomSheep?.let { dialog->
+                        outLogs("dialog is not null")
+                        dialogBottomSheep = dialog.reCreateBottomSheetFragment()
+                        dialogBottomSheep?.show(requireParentFragment().parentFragmentManager,"bottom_sheet")
+                    }
+                } else{
+                    dialogBottomSheep?.dismiss()
+                }
+            }
+        }
+        filterData.observe(viewLifecycleOwner){
+            it.getContentIfNotHandled()?.let { filterData->
+                dialogBottomSheep = BottomSheetFragment(filterData)
             }
         }
         updatePage()

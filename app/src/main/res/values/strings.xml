@@ -21,4 +21,6 @@
     <string name="checkout">Checkout</string>
     <string name="delivery">Delivery</string>
     <string name="total">Total</string>
+    <string name="done">Done</string>
+    <string name="filter_options">Filter options</string>
 </resources>

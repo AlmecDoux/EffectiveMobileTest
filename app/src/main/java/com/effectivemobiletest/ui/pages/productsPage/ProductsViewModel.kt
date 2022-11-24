@@ -31,13 +31,51 @@ class ProductsViewModel
     private val _countOfProductsInCart = MutableLiveData<Event<Int>>()
     val countOfProductsInCart = _countOfProductsInCart.asLiveData()
 
+    private val _openFilterPanel = MutableLiveData<Event<Boolean>>()
+    val openFilterPanel = _openFilterPanel.asLiveData()
+
+    private val _filterData = MutableLiveData<Event<List<DisplayableItem>>>()
+    val filterData = _filterData.asLiveData()
+
     fun updatePage(){
         outLogs("UpdatePage")
         _loading.post(Event(LoadingActions.ShowLoading))
         viewModelScope.launch {
             getHotSalesItems()
             getCountOfProductsInCart()
+            getFilterData()
         }
+    }
+
+    private fun getFilterData() {
+        _filterData.post(
+            Event(listOf(
+                StickyAdapterItem("Brand"),
+                SpinnerAdapterItem(items = listOf(
+                    "Samsung",
+                    "Apple",
+                    "Huawei",
+                    "Xiaomi",
+                    "Motorola"
+                )),
+                StickyAdapterItem("Price"),
+                SpinnerAdapterItem(items = listOf(
+                    "$300 - $500",
+                    "$501 - $1000",
+                    "$1001 - $3000",
+                    "$3001 - $5000",
+                    "$5001 - $10000",
+                )),
+                StickyAdapterItem("Size"),
+                SpinnerAdapterItem(items = listOf(
+                    "Samsung",
+                    "Apple",
+                    "Huawei",
+                    "Xiaomi",
+                    "Motorola"
+                )),
+            ))
+        )
     }
 
     private suspend fun getCountOfProductsInCart() {
@@ -52,7 +90,9 @@ class ProductsViewModel
                 val mainPage = listOf(
                     LocationAdapterItem(
                         defaultLocation = "City",
-                        clickOnFilter = {},
+                        clickOnFilter = {
+                            _openFilterPanel.post(Event(true))
+                        },
                         chooseLocation = {}
                     ),
                     HeaderTitleAdapterItem(

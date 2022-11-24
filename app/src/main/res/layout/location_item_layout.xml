@@ -6,8 +6,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imgPoint"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
         android:layout_marginEnd="@dimen/small_margin"
         app:layout_constraintBottom_toBottomOf="@+id/locationsSpinner"
         app:layout_constraintEnd_toStartOf="@+id/locationsSpinner"
@@ -29,8 +29,8 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/btnFilter"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_marginEnd="@dimen/medium_margin"
         app:layout_constraintBottom_toBottomOf="@+id/locationsSpinner"
         app:layout_constraintEnd_toEndOf="parent"

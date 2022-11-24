@@ -1,0 +1,14 @@
+<TextView
+    android:id="@+id/textSpinner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center|start"
+    android:text="1000$"
+    android:paddingHorizontal="@dimen/medium_margin"
+    android:paddingVertical="@dimen/small_margin"
+    android:textColor="@color/blackColor"
+    android:textSize="@dimen/medium_text_page_size"
+    android:maxLines="1"
+    android:ellipsize="end"
+    android:singleLine="true"
+    xmlns:android="http://schemas.android.com/apk/res/android" />

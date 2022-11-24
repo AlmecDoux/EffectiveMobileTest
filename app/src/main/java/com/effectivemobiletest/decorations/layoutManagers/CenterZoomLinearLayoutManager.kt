@@ -1,8 +1,10 @@
 package com.effectivemobiletest.decorations.layoutManagers
 
 import android.content.Context
+import android.util.DisplayMetrics
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import kotlin.math.abs
 
@@ -37,4 +39,5 @@ class CenterZoomLinearLayoutManager(
             child.scaleY = scale
         }
     }
+
 }

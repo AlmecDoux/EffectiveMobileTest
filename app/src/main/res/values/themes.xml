@@ -9,6 +9,10 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@color/backgroundColor</item>
         <item name="android:navigationBarColor">@color/backgroundColor</item>
+        <item name="android:dropDownListViewStyle">@style/MyListView</item>
+    </style>
+    <style name="MyListView" parent="@android:style/Widget.Holo.Light.ListView">
+        <item name="android:listSelector">@color/transparent</item>
     </style>
     <style name="Widget.Toolbar" parent="@style/Theme.Design.NoActionBar">
         <item name="contentInsetStart">0dp</item>

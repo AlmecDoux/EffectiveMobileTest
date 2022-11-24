@@ -11,16 +11,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.LinearSnapHelper
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.effectivemobile.test.databinding.CarouselLayoutBinding
 import com.effectivemobile.test.databinding.HeaderTitleLayoutBinding
 import com.effectivemobile.test.databinding.LocationItemLayoutBinding
 import com.effectivemobile.test.databinding.SearchProductLayoutBinding
+import com.effectivemobile.test.databinding.SpinnerLayoutBinding
+import com.effectivemobile.test.databinding.StickyItemLayoutBinding
 import com.effectivemobiletest.adapters.adaptersData.*
 import com.effectivemobiletest.adapters.minorAdapters.*
 import com.effectivemobiletest.decorations.layoutManagers.CenterZoomLinearLayoutManager
 import com.effectivemobiletest.decorations.marginDecorations.MarginItemDecoration
-import com.effectivemobiletest.ui.pages.cartPage.BasketData
 import com.hannesdorfmann.adapterdelegates4.dsl.adapterDelegateViewBinding
+import kotlinx.coroutines.*
 
 interface DisplayableItem
 
@@ -61,7 +64,8 @@ fun carouselHotSaleAdapterDelegate() = adapterDelegateViewBinding<HotSalesAdapte
 ){
     bind {
         val snapHelper = LinearSnapHelper()
-        binding.carousel.adapter = HotSalesAdapter(hotSalesItems = item.hotSalesItems)
+        val adapter = HotSalesAdapter(hotSalesItems = item.hotSalesItems)
+        binding.carousel.adapter = adapter
         binding.carousel.layoutManager = CenterZoomLinearLayoutManager(itemView.context)
         binding.carousel.overScrollMode = OVER_SCROLL_NEVER
         snapHelper.attachToRecyclerView(binding.carousel)
@@ -129,5 +133,22 @@ fun productCapacityAdapterDelegate() = adapterDelegateViewBinding<ProductCapacit
         binding.carousel.addItemDecoration(MarginItemDecoration(25))
     }
 }
+
+fun stickyAdapterDelegate() = adapterDelegateViewBinding<StickyAdapterItem, DisplayableItem, StickyItemLayoutBinding>(
+    { layoutInflater, root -> StickyItemLayoutBinding.inflate(layoutInflater, root, false) }
+){
+    bind {
+        binding.stickyTitle.text = item.text
+    }
+}
+
+fun spinnerAdapterDelegate() = adapterDelegateViewBinding<SpinnerAdapterItem, DisplayableItem, SpinnerLayoutBinding>(
+{ layoutInflater, root -> SpinnerLayoutBinding.inflate(layoutInflater, root, false) }
+){
+    bind {
+        binding.spinner.adapter = SpinnerAdapter(itemView.context, item.items)
+    }
+}
+
 
 

@@ -12,7 +12,7 @@
         android:layout_marginTop="@dimen/medium_margin"
         android:background="@drawable/dark_rounded_button"
         android:scaleType="centerInside"
-        app:layout_constraintEnd_toStartOf="@+id/titlePage"
+        app:layout_constraintEnd_toStartOf="@+id/titleSheet"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
         app:srcCompat="@drawable/arrow_icon" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/titlePage"
+        android:id="@+id/titleSheet"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/medium_margin"
@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/btnBack"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/titlePage"
+        app:layout_constraintStart_toEndOf="@+id/titleSheet"
         app:layout_constraintTop_toTopOf="@+id/btnBack"
         app:srcCompat="@drawable/address_point_icon"
         app:tint="@color/white" />
@@ -59,7 +59,7 @@
         android:textSize="35sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titlePage" />
+        app:layout_constraintTop_toBottomOf="@+id/titleSheet" />
 
 
     <androidx.recyclerview.widget.RecyclerView
