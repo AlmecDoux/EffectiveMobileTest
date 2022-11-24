@@ -57,7 +57,6 @@ class DetailsProductFragment : BaseFragment<DetailProductLayoutBinding, DetailPr
     }
 
     private suspend fun setPageData(productDetailsData:DetailsPageData):Unit = withContext(mainDispatcher){
-        outLogs("setPageData")
         binding.include.colorAndCapacityRecycler.adapter = ProductFeatureAdapter().apply {
             items = productDetailsData.colorAndCapacityData
         }

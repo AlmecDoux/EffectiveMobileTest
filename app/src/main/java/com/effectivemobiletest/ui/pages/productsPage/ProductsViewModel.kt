@@ -56,34 +56,7 @@ class ProductsViewModel
 
     }
     private fun getFilterData() {
-        _filterData.post(
-            Event(listOf(
-                StickyAdapterItem("Brand"),
-                SpinnerAdapterItem(items = listOf(
-                    "Samsung",
-                    "Apple",
-                    "Huawei",
-                    "Xiaomi",
-                    "Motorola"
-                )),
-                StickyAdapterItem("Price"),
-                SpinnerAdapterItem(items = listOf(
-                    "$300 - $500",
-                    "$501 - $1000",
-                    "$1001 - $3000",
-                    "$3001 - $5000",
-                    "$5001 - $10000",
-                )),
-                StickyAdapterItem("Size"),
-                SpinnerAdapterItem(items = listOf(
-                    "4.5 to 5.5 inches",
-                    "6.0 to 6.5 inches",
-                    "6.5 to 6.5 inches",
-                    "8.0 to 9.0 inches",
-                    "9.5 to 10.0 inches",
-                )),
-            ))
-        )
+        _filterData.post(Event(filtersDataBuilder))
     }
 
     private suspend fun getCountOfProductsInCart() {
@@ -97,7 +70,7 @@ class ProductsViewModel
             it.data?.let { mainPageData ->
                 val mainPage = listOf(
                     LocationAdapterItem(
-                        defaultLocation = "City",
+                        defaultLocation = getString(R.string.city),
                         clickOnFilter = {
                             _openFilterPanel.post(Event(BottomSheet))
                         },
@@ -132,7 +105,7 @@ class ProductsViewModel
                     ),
                     BestSalesAdapterItem(
                         items = mainPageData.bestSellerItems,
-                        clickOn = {
+                        clickOn = { itemId->
                             _navigateEvent.navigate(ProductsPageFragmentDirections.actionProductsPageFragmentToDetailsProductFragment())
                         }
                     )
@@ -141,12 +114,9 @@ class ProductsViewModel
             }
             it.error?.let {
                 _loading.post(Event(LoadingActions.HideLoading))
-                App.outLogs("error $it")
             }
         }
     }
-
-
 
     private val categoryDataBuilder = arrayListOf(
         CategoryItem(id = 1, img = R.drawable.phone_icon, title = "Phone"),
@@ -159,5 +129,30 @@ class ProductsViewModel
         CategoryItem(id = 8, img = R.drawable.books_icon, title = "Books")
 
     )
-
+    private val filtersDataBuilder = listOf(
+        StickyAdapterItem("Brand"),
+        SpinnerAdapterItem(items = listOf(
+            "Samsung",
+            "Apple",
+            "Huawei",
+            "Xiaomi",
+            "Motorola"
+        )),
+        StickyAdapterItem("Price"),
+        SpinnerAdapterItem(items = listOf(
+            "$300 - $500",
+            "$501 - $1000",
+            "$1001 - $3000",
+            "$3001 - $5000",
+            "$5001 - $10000",
+        )),
+        StickyAdapterItem("Size"),
+        SpinnerAdapterItem(items = listOf(
+            "4.5 to 5.5 inches",
+            "6.0 to 6.5 inches",
+            "6.5 to 6.5 inches",
+            "8.0 to 9.0 inches",
+            "9.5 to 10.0 inches",
+        )),
+    )
 }
