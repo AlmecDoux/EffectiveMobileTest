@@ -202,8 +202,9 @@
             android:gravity="center"
             android:includeFontPadding="false"
             android:text="@string/add_to_cart"
+            android:textAllCaps="false"
+            android:textSize="@dimen/middle_text_page_size"
             android:textColor="@color/white"
-            android:textSize="@dimen/primary_text_page_size"
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -215,7 +216,8 @@
             android:text=""
             android:includeFontPadding="false"
             android:textColor="@color/white"
-            android:textSize="@dimen/primary_text_page_size"
+            android:textAllCaps="false"
+            android:textSize="@dimen/middle_text_page_size"
             android:textStyle="bold" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 

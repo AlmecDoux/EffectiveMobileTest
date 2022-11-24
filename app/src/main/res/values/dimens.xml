@@ -8,6 +8,7 @@
     <dimen name="title_page_size">25sp</dimen>
     <dimen name="text_page_size">12sp</dimen>
     <dimen name="medium_text_page_size">18sp</dimen>
+    <dimen name="middle_text_page_size">20sp</dimen>
     <dimen name="primary_text_page_size">16sp</dimen>
     <dimen name="small_page_size">10sp</dimen>
     <dimen name="big_round">15dp</dimen>

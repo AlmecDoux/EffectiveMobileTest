@@ -21,7 +21,7 @@ data class BasketData(
 fun UserCartData.mapToPageData():CartPageData{
     return CartPageData(
         delivery = this.delivery,
-        totalPrice = AmountDecorator.getNormalAmountToStringWithCurrency(this.totalPrice, 2),
+        totalPrice = AmountDecorator.getNormalAmountToStringWithCurrency(this.totalPrice, 2)+" us",
         basket = this.basket.map { basket->
             BasketData(
                 imageURL = basket.imageURL,
