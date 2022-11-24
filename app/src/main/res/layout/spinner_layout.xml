@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/spinner"
     android:padding="0dp"
+    android:background="@drawable/grey_rounded_background"
+    android:popupBackground="@drawable/grey_rounded_background"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 

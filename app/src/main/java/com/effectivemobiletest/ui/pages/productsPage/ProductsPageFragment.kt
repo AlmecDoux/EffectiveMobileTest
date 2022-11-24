@@ -1,5 +1,6 @@
 package com.effectivemobiletest.ui.pages.productsPage
 
+import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -53,8 +54,16 @@ class ProductsPageFragment: BaseFragment<ProductsPageLayoutBinding, ProductsView
         loading.observe(viewLifecycleOwner){
             it.getContentIfNotHandled()?.let { data->
                 when(data){
-                    is LoadingActions.ShowLoading -> binding.swipeLayout.isRefreshing = true
-                    is LoadingActions.HideLoading -> binding.swipeLayout.isRefreshing = false
+                    is LoadingActions.ShowLoading -> {
+                        binding.productsPageRecycler.visibility = View.GONE
+                        binding.navigationBar.visibility = View.GONE
+                        binding.swipeLayout.isRefreshing = true
+                    }
+                    is LoadingActions.HideLoading -> {
+                        binding.productsPageRecycler.visibility = View.VISIBLE
+                        binding.navigationBar.visibility = View.VISIBLE
+                        binding.swipeLayout.isRefreshing = false
+                    }
                 }
             }
         }
@@ -64,16 +73,12 @@ class ProductsPageFragment: BaseFragment<ProductsPageLayoutBinding, ProductsView
             }
         }
         openFilterPanel.observe(viewLifecycleOwner){
-            it.peekContent().let { filterOpen->
-                outLogs("filterOpen: $filterOpen")
-                if(filterOpen){
-                    dialogBottomSheep?.let { dialog->
-                        outLogs("dialog is not null")
+            it.getContentIfNotHandled()?.let {
+                dialogBottomSheep?.let { dialog->
+                    if(childFragmentManager.findFragmentByTag(BottomSheetFragment.TAG) == null){
                         dialogBottomSheep = dialog.reCreateBottomSheetFragment()
-                        dialogBottomSheep?.show(requireParentFragment().parentFragmentManager,"bottom_sheet")
+                        dialogBottomSheep?.show(childFragmentManager, BottomSheetFragment.TAG)
                     }
-                } else{
-                    dialogBottomSheep?.dismiss()
                 }
             }
         }

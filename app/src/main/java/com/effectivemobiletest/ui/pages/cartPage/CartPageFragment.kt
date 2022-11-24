@@ -1,6 +1,7 @@
 package com.effectivemobiletest.ui.pages.cartPage
 
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.effectivemobile.test.databinding.CartPageLayoutBinding
@@ -15,7 +16,9 @@ class CartPageFragment:BaseFragment<CartPageLayoutBinding, CartPageViewModel>() 
     override val viewModel: CartPageViewModel by viewModels()
 
     override fun setUpViewsBinding() {
-
+        binding.btnBack.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
     override fun CartPageViewModel.observeData() {
         cartPageData.observe(viewLifecycleOwner){

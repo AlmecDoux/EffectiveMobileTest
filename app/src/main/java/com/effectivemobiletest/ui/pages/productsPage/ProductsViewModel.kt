@@ -16,6 +16,8 @@ import com.effectivemobiletest.extensions.navigate
 import com.effectivemobiletest.extensions.post
 import com.effectivemobiletest.ui.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -31,7 +33,7 @@ class ProductsViewModel
     private val _countOfProductsInCart = MutableLiveData<Event<Int>>()
     val countOfProductsInCart = _countOfProductsInCart.asLiveData()
 
-    private val _openFilterPanel = MutableLiveData<Event<Boolean>>()
+    private val _openFilterPanel = MutableLiveData<Event<BottomSheet>>()
     val openFilterPanel = _openFilterPanel.asLiveData()
 
     private val _filterData = MutableLiveData<Event<List<DisplayableItem>>>()
@@ -40,13 +42,19 @@ class ProductsViewModel
     fun updatePage(){
         outLogs("UpdatePage")
         _loading.post(Event(LoadingActions.ShowLoading))
+        updateDataPage()
+    }
+
+    private fun updateDataPage(){
         viewModelScope.launch {
             getHotSalesItems()
             getCountOfProductsInCart()
             getFilterData()
+            joinAll()
+            _loading.post(Event(LoadingActions.HideLoading))
         }
-    }
 
+    }
     private fun getFilterData() {
         _filterData.post(
             Event(listOf(
@@ -68,11 +76,11 @@ class ProductsViewModel
                 )),
                 StickyAdapterItem("Size"),
                 SpinnerAdapterItem(items = listOf(
-                    "Samsung",
-                    "Apple",
-                    "Huawei",
-                    "Xiaomi",
-                    "Motorola"
+                    "4.5 to 5.5 inches",
+                    "6.0 to 6.5 inches",
+                    "6.5 to 6.5 inches",
+                    "8.0 to 9.0 inches",
+                    "9.5 to 10.0 inches",
                 )),
             ))
         )
@@ -91,7 +99,7 @@ class ProductsViewModel
                     LocationAdapterItem(
                         defaultLocation = "City",
                         clickOnFilter = {
-                            _openFilterPanel.post(Event(true))
+                            _openFilterPanel.post(Event(BottomSheet))
                         },
                         chooseLocation = {}
                     ),
@@ -130,7 +138,6 @@ class ProductsViewModel
                     )
                 )
                 _mainPageData.post(Event(mainPage))
-                _loading.post(Event(LoadingActions.HideLoading))
             }
             it.error?.let {
                 _loading.post(Event(LoadingActions.HideLoading))

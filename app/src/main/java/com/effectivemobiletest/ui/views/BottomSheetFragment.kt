@@ -10,16 +10,14 @@ import com.effectivemobile.test.R
 import com.effectivemobile.test.databinding.FiltersBottomLayoutBinding
 import com.effectivemobiletest.adapters.DisplayableItem
 import com.effectivemobiletest.adapters.FilterAdapter
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class BottomSheetFragment(private val data:List<DisplayableItem>) : BottomSheetDialogFragment() {
 
     private lateinit var binding: FiltersBottomLayoutBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.Theme_EffectiveMobileTest)
-    }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View {
         binding = FiltersBottomLayoutBinding.inflate(layoutInflater, null, false)
@@ -44,6 +42,7 @@ class BottomSheetFragment(private val data:List<DisplayableItem>) : BottomSheetD
     fun reCreateBottomSheetFragment():BottomSheetFragment {
         return BottomSheetFragment(data)
     }
+
     override fun onResume() {
         super.onResume()
         dialog?.let {
@@ -56,5 +55,8 @@ class BottomSheetFragment(private val data:List<DisplayableItem>) : BottomSheetD
             it.window?.setBackgroundDrawableResource(R.color.transparent)
             it.window?.setBackgroundDrawable(ColorDrawable(0))
         }
+    }
+    companion object{
+        val TAG = "bottom_sheet"
     }
 }
