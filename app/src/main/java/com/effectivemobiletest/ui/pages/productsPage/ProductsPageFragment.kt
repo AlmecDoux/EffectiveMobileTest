@@ -1,7 +1,9 @@
 package com.effectivemobiletest.ui.pages.productsPage
 
+import android.content.Context
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -13,25 +15,32 @@ import com.effectivemobile.domain.annotations.MainDispatcher
 import com.effectivemobile.test.databinding.ProductsPageLayoutBinding
 import com.effectivemobiletest.App.Companion.outLogs
 import com.effectivemobiletest.adapters.ProductPageAdapter
+import com.effectivemobiletest.appComponent
 import com.effectivemobiletest.events.LoadingActions
 import com.effectivemobiletest.ui.BaseFragment
+import com.effectivemobiletest.ui.pages.detailsProductPage.DetailProductViewModel
 import com.effectivemobiletest.ui.views.BottomSheetFragment
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@AndroidEntryPoint
 class ProductsPageFragment: BaseFragment<ProductsPageLayoutBinding, ProductsViewModel>() {
 
     @Inject
     @MainDispatcher
     lateinit var mainDispatcher: CoroutineDispatcher
 
-    override val viewModel: ProductsViewModel by viewModels()
     override val binding: ProductsPageLayoutBinding by viewBinding(CreateMethod.INFLATE)
     private var dialogBottomSheep:BottomSheetFragment? = null
+
+
+    override fun Context.injectFragment() {
+        appComponent.inject(this@ProductsPageFragment)
+    }
+
+    override fun createViewModel() {
+        viewModel = ViewModelProvider(this, viewModelFactory)[ProductsViewModel::class.java]
+    }
     override fun setUpViewsBinding() {
         binding.swipeLayout.setOnRefreshListener {
             viewModel.updatePage()
@@ -89,4 +98,5 @@ class ProductsPageFragment: BaseFragment<ProductsPageLayoutBinding, ProductsView
         }
         updatePage()
     }
+
 }

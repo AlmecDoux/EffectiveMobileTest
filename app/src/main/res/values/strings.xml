@@ -24,4 +24,11 @@
     <string name="done">Done</string>
     <string name="filter_options">Filter options</string>
     <string name="city">City</string>
+    <string name="phone">Phone</string>
+    <string name="computer">Computer</string>
+    <string name="health">Health</string>
+    <string name="books">Books</string>
+    <string name="brand">Brand</string>
+    <string name="price">Price</string>
+    <string name="size">Size</string>
 </resources>

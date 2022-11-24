@@ -10,11 +10,9 @@ import com.effectivemobiletest.events.Event
 import com.effectivemobiletest.extensions.asLiveData
 import com.effectivemobiletest.extensions.post
 import com.effectivemobiletest.ui.BaseViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
 class DetailProductViewModel
 @Inject constructor(
     private val productDetailsUseCase: GetProductDetailsUseCase

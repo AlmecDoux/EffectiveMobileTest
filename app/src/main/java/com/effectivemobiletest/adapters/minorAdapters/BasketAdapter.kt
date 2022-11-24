@@ -3,6 +3,7 @@ package com.effectivemobiletest.adapters.minorAdapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.effectivemobile.test.R
 import com.effectivemobile.test.databinding.BasketItemLayoutBinding
 import com.effectivemobiletest.ui.pages.cartPage.BasketData
 import com.squareup.picasso.Picasso
@@ -17,7 +18,8 @@ class BasketAdapter(private val basketItems:List<BasketData>):
         fun bind(basketData: BasketData){
             binding.cartProductAmount.text = basketData.price
             binding.cartProductTitle.text = basketData.title
-            Picasso.get().load(basketData.imageURL).into(binding.imgCartProduct)
+            Picasso.get().load(basketData.imageURL)
+                .into(binding.imgCartProduct)
         }
     }
 

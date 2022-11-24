@@ -5,10 +5,11 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.LinearLayoutCompat.LayoutParams
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.effectivemobile.test.R
 import com.effectivemobile.test.databinding.ProductDetailPhotoLayoutBinding
 import com.squareup.picasso.Picasso
 
-class PhotosAdapter():Adapter<PhotosAdapter.PhotosViewHolder>(){
+class ProductPhotosAdapter():Adapter<ProductPhotosAdapter.PhotosViewHolder>(){
 
     private var photos:ArrayList<String> = arrayListOf()
 
@@ -22,7 +23,8 @@ class PhotosAdapter():Adapter<PhotosAdapter.PhotosViewHolder>(){
             val photoHeight = (photoWidth * 1.5).toInt()
             val layoutParams = LayoutParams(photoWidth, photoHeight)
             binding.root.layoutParams = layoutParams
-            Picasso.get().load(photoUrl).into(binding.imgProductPhoto)
+            Picasso.get().load(photoUrl)
+                .into(binding.imgProductPhoto)
         }
     }
 

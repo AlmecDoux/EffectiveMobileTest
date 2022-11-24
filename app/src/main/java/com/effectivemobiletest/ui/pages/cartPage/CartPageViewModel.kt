@@ -1,5 +1,6 @@
 package com.effectivemobiletest.ui.pages.cartPage
 
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.effectivemobile.domain.useCases.GetProductUserCartUseCase
@@ -8,11 +9,9 @@ import com.effectivemobiletest.events.Event
 import com.effectivemobiletest.extensions.asLiveData
 import com.effectivemobiletest.extensions.post
 import com.effectivemobiletest.ui.BaseViewModel
-import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-@HiltViewModel
 class CartPageViewModel
 @Inject constructor(
     private val getProductUserCartUseCase: GetProductUserCartUseCase

@@ -1,30 +1,24 @@
 package com.effectivemobiletest.ui.pages.detailsProductPage
 
-import android.graphics.Typeface
+import android.content.Context
 import android.view.View
-import android.widget.TextView
-import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.widget.ViewPager2
 import by.kirich1409.viewbindingdelegate.CreateMethod
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.effectivemobile.domain.annotations.MainDispatcher
-import com.effectivemobile.test.R
 import com.effectivemobile.test.databinding.DetailProductLayoutBinding
-import com.effectivemobiletest.App.Companion.outLogs
-import com.effectivemobiletest.decorations.layoutManagers.CenterZoomLinearLayoutManager
-import com.effectivemobiletest.adapters.minorAdapters.PhotosAdapter
 import com.effectivemobiletest.adapters.ProductFeatureAdapter
+import com.effectivemobiletest.adapters.minorAdapters.ProductPhotosAdapter
+import com.effectivemobiletest.appComponent
+import com.effectivemobiletest.decorations.layoutManagers.CenterZoomLinearLayoutManager
 import com.effectivemobiletest.ui.BaseFragment
-import com.google.android.material.tabs.TabLayout
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-@AndroidEntryPoint
 class DetailsProductFragment : BaseFragment<DetailProductLayoutBinding, DetailProductViewModel>() {
 
     @Inject
@@ -32,7 +26,14 @@ class DetailsProductFragment : BaseFragment<DetailProductLayoutBinding, DetailPr
     lateinit var mainDispatcher: CoroutineDispatcher
 
     override val binding: DetailProductLayoutBinding by viewBinding(CreateMethod.INFLATE)
-    override val viewModel: DetailProductViewModel by viewModels()
+
+    override fun Context.injectFragment() {
+        appComponent.inject(this@DetailsProductFragment)
+    }
+
+    override fun createViewModel() {
+        viewModel = ViewModelProvider(this, viewModelFactory)[DetailProductViewModel::class.java]
+    }
 
     override fun setUpViewsBinding() {
         binding.include.isFavorite.setOnClickListener{
@@ -60,7 +61,7 @@ class DetailsProductFragment : BaseFragment<DetailProductLayoutBinding, DetailPr
         binding.include.colorAndCapacityRecycler.adapter = ProductFeatureAdapter().apply {
             items = productDetailsData.colorAndCapacityData
         }
-        val photosAdapter = PhotosAdapter()
+        val photosAdapter = ProductPhotosAdapter()
         binding.photosProductCarousel.adapter = photosAdapter
         binding.photosProductCarousel.layoutManager = CenterZoomLinearLayoutManager(requireContext())
         binding.photosProductCarousel.apply {

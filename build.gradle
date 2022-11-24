@@ -5,12 +5,11 @@ buildscript {
         google()
         mavenCentral()
     }
-    ext.hilt_version = "2.44"
     ext.nav_version = "2.5.3"
+    ext.dagger_version = "2.38.1"
     dependencies {
         classpath 'com.android.tools.build:gradle:7.2.2'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.7.20'
-        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
     }
 }

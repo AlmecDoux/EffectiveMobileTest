@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.effectivemobile.domain.models.subtypes.HotSalesItem
+import com.effectivemobile.test.R
 import com.effectivemobile.test.databinding.BlockHotSaleItemLayoutBinding
 import com.squareup.picasso.Picasso
 
@@ -19,7 +20,8 @@ class HotSalesAdapter(private var hotSalesItems:List<HotSalesItem>):
             binding.titleHotSaleItem.text = hotSaleItem.title
             binding.subTitleHotSaleItem.text = hotSaleItem.subTitle
             binding.iconNew.visibility = if(hotSaleItem.isNew) View.VISIBLE else View.GONE
-            Picasso.get().load(hotSaleItem.pictureURL).into(binding.imgHotSaleItem)
+            Picasso.get().load(hotSaleItem.pictureURL)
+                .into(binding.imgHotSaleItem)
         }
     }
 
